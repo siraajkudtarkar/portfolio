@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "../SiteFooter";
-import demoGif from "./Wildcat Demo.gif";
 import wildcatHome from "./Wildcat Home.png";
 import wildcatLeaderboard from "./Wildcat Leaderboard.png"
 import wildcatMatchup from "./Wildcat Matchups.png";
@@ -215,7 +214,7 @@ export default function WildcatPage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <div className="mx-auto flex aspect-[9/19.5] w-full max-w-[360px] items-center justify-center overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 text-sm text-[#7a5a42] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-[#cbb8aa]">
-              <Image src={demoGif} alt="Wildcat Fantasy Football demo" unoptimized className="h-full w-full object-cover" />
+              <Image src={wildcatMatchup} alt="Wildcat Fantasy Football demo preview" className="h-full w-full object-cover" />
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">

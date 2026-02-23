@@ -5,7 +5,6 @@ import SiteFooter from "../SiteFooter";
 import addActivityImg from "./MeTime Screen Add Activity.png";
 import homeFeedImg from "./MeTime Screen Home Feed.png";
 import authImg from "./MeTime Screen Sign Up Login.png";
-import prototypeGif from "./MeTime Prototype.gif";
 
 export const metadata = {
   title: "MeTime | Siraaj Kudtarkar",
@@ -160,7 +159,7 @@ export default function MeTimePage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm dark:border-[#3b2a1f] dark:bg-black aspect-[9/19.5]">
-              <Image src={prototypeGif} alt="MeTime prototype demo" className="h-full w-full object-cover" />
+              <Image src={homeFeedImg} alt="MeTime prototype preview" className="h-full w-full object-cover" />
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {demoLinks.map((link) => (

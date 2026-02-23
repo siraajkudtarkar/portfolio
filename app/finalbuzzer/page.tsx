@@ -9,9 +9,7 @@ import SiteFooter from "../SiteFooter";
 // import demoGif from "./FinalBuzzer Demo.gif";
 
 import finalBuzzerDashboard from "./The Final Buzzer.jpeg";
-import finalBuzzerDemo from "./The Final Buzzer Demo.gif";
 import finalBuzzerMobile from "./The Final Buzzer Mobile.png";
-import finalBuzzerMobileDemo from "./The Final Buzzer Mobile Demo.gif";
 
 export const metadata = {
   title: "The Final Buzzer | Siraaj Kudtarkar",
@@ -204,8 +202,8 @@ export default function FinalBuzzerPage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <HeroMediaPicker
-              desktopImage={finalBuzzerDemo}
-              mobileImage={finalBuzzerMobileDemo}
+              desktopImage={finalBuzzerDashboard}
+              mobileImage={finalBuzzerMobile}
               desktopAlt="The Final Buzzer desktop demo"
               mobileAlt="The Final Buzzer mobile demo"
             />
