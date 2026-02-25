@@ -18,8 +18,9 @@ export const metadata = {
 };
 
 const overview = [
-  "Product — Built a React study planner with real-time countdown and planned-vs-actual tracking.",
-  "Quality — Improved accessibility and responsive UX through SI539-driven audits.",
+  "Accountability: Built a real time loop so students can compare plan vs actual effort instantly.",
+  "Execution: Shipped timer and workload workflows that convert intention into measurable execution.",
+  "Quality: Improved accessibility and responsive UX through targeted audits and implementation fixes.",
 ];
 
 const demoLinks = [
@@ -30,28 +31,24 @@ const highlightGroups = [
   {
     title: "Execution",
     items: [
-      "Core features — Shipped countdown timer, task CRUD, and time-tracking controls.",
-      "Data flow — Added local persistence to preserve study history across sessions.",
-      "UX clarity — Built a dashboard that summarizes workload and real progress.",
+      "Core features: Shipped countdown timer, task CRUD, and time tracking controls.",
+      "Data flow: Added local persistence to preserve study history across sessions.",
+      "UX clarity: Built a dashboard that summarizes workload and real progress.",
     ],
   },
   {
     title: "Accessibility Impact",
     items: [
-      "Inclusive UX — Validated keyboard navigation and baseline screen reader behavior.",
-      "Implementation — Improved labels/structure for assistive technology support.",
-      "Responsiveness — Refined layouts to keep dashboard usability on small screens.",
+      "Inclusive UX: Validated keyboard navigation and baseline screen reader behavior.",
+      "Implementation: Improved labels and structure for assistive technology support.",
+      "Responsiveness: Refined layouts to keep dashboard usability on small screens.",
     ],
   },
 ];
 
-const stackDev = [
-  "React",
-  "JavaScript",
-  "Day.js (dayjs)",
-  "Local Storage",
-  "GitHub Pages (deployment)",
-];
+const homepagePills = ["React", "Node", "JavaScript", "HTML/CSS", "Frontend Development", "Web Accessibility"];
+
+const stackDev = [...homepagePills];
 
 const stackDesign = [
   "Accessibility audit (manual testing)",
@@ -62,18 +59,22 @@ const stackDesign = [
 ];
 
 const outcomes = [
-  "Delivery — Shipped a production-ready study workflow from planning to time tracking.",
-  "Engineering growth — Strengthened real-time state management and timer architecture.",
-  "Quality mindset — Embedded accessibility checks during build, not post-launch.",
-  "Forward plan — Documented scaling paths for WCAG contrast and analytics.",
+  "Delivery: Shipped a production ready study workflow from planning to time tracking.",
+  "Engineering growth: Strengthened real time state management and timer architecture.",
+  "Quality mindset: Embedded accessibility checks during build, not post launch.",
+  "Learning: Improved how I design for accessibility while shipping quickly.",
 ];
 
+const finalBuzzerDesktopDemoVimeoUrl = "https://player.vimeo.com/video/1167950430?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
+const finalBuzzerMobileDemoVimeoUrl = "https://player.vimeo.com/video/1167948538?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
+
 const renderImpactLine = (line: string) => {
-  const [lead, ...rest] = line.split(" — ");
+  const [lead, ...rest] = line.split(": ");
+  if (!rest.length) return <>{line}</>;
   return (
     <>
       <strong>{lead}</strong>
-      {rest.length ? ` — ${rest.join(" — ")}` : ""}
+      {rest.length ? `: ${rest.join(": ")}` : ""}
     </>
   );
 };
@@ -122,20 +123,19 @@ export default function FinalBuzzerPage() {
           </div>
         </div>
 
+        <section className="mt-6 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-6 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
+          <p className="text-2xl font-semibold leading-tight text-[#2e1c10] sm:text-3xl dark:text-white">
+            How can students see in real time whether they are actually following their exam prep plan?
+          </p>
+        </section>
+
         <header className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-lg shadow-[#2e1c10]/10 backdrop-blur dark:border-[#3b2a1f] dark:bg-black">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-[#5a4030] dark:text-white">
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              EdTech
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              React
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Accessibility
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Responsive design
-            </span>
+            {homepagePills.map((pill) => (
+              <span key={pill} className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
+                {pill}
+              </span>
+            ))}
           </div>
 
           <div className="space-y-3">
@@ -143,8 +143,11 @@ export default function FinalBuzzerPage() {
             <h1 className="text-3xl font-semibold">The Final Buzzer</h1>
             <p className="text-sm font-semibold text-[#7a5a42] dark:text-[#cbb8aa]">Education</p>
             <p className="text-base leading-7 text-[#5a4030] dark:text-white">
-              A React-based web application that helps students prepare for exams with a real-time countdown and a
-              dashboard for tracking planned versus actual study time.
+              A React web app that helps students prep for exams with a real-time countdown and a
+              dashboard that compares planned versus actual study time.
+            </p>
+            <p className="text-base leading-7 text-[#5a4030] dark:text-white">
+              This project focuses on <strong>behavior change</strong>. Students get constant visual feedback on whether they are executing their plan.
             </p>
 
             <HeroMediaPicker
@@ -152,6 +155,7 @@ export default function FinalBuzzerPage() {
               mobileImage={finalBuzzerMobile}
               desktopAlt="The Final Buzzer desktop dashboard"
               mobileAlt="The Final Buzzer mobile screenshot"
+              mobileIphoneFrame
             />
           </div>
         </header>
@@ -206,9 +210,12 @@ export default function FinalBuzzerPage() {
               mobileImage={finalBuzzerMobile}
               desktopAlt="The Final Buzzer desktop demo"
               mobileAlt="The Final Buzzer mobile demo"
+              desktopVimeoUrl={finalBuzzerDesktopDemoVimeoUrl}
+              mobileVimeoUrl={finalBuzzerMobileDemoVimeoUrl}
+              mobileIphoneFrame
             />
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className={`grid gap-3 ${demoLinks.length === 1 ? "mx-auto w-full max-w-sm" : "sm:grid-cols-2"}`}>
               {demoLinks.map((link) => (
                 <a
                   key={link.label}
@@ -239,7 +246,7 @@ export default function FinalBuzzerPage() {
                 <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
                   {group.items.map((item) => (
                     <li key={item} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
+                      <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
                       <span>{renderImpactLine(item)}</span>
                     </li>
                   ))}
@@ -254,23 +261,21 @@ export default function FinalBuzzerPage() {
           <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
             {outcomes.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
+                <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
                 <span>{renderImpactLine(item)}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
+        <div className="mt-8 flex flex-wrap gap-3 text-base font-semibold">
           <Link
-            className="inline-flex items-center gap-2 rounded-full bg-[#9d5e34] px-5 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#7f4b28] bg-[#8a4a2b] px-6 py-3 text-white shadow-md shadow-[#2e1c10]/20 transition hover:-translate-y-0.5 hover:bg-[#6f3b22] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/30 dark:border-[#e6d8c8] dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
             href="/#contact"
           >
-            Contact me about this
+            Questions? Contact me
           </Link>
         </div>
-
-        <SiteFooter projectPage />
       </main>
     </div>
   );

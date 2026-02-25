@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "../SiteFooter";
+import VimeoEmbed from "../VimeoEmbed";
 import wildcatHome from "./Wildcat Home.png";
 import wildcatLeaderboard from "./Wildcat Leaderboard.png"
 import wildcatMatchup from "./Wildcat Matchups.png";
@@ -12,14 +13,13 @@ export const metadata = {
 };
 
 const overview = [
-  "Product — Built a mobile fantasy app with a bet-based multiplier system for weekly matchups.",
-  "Architecture — Delivered React Native frontend with secure auth and MongoDB-backed APIs.",
+  "Game strategy: Introduced multiplier betting to make fantasy decisions meaningfully higher stakes.",
+  "Product: Built a mobile fantasy experience focused on risk and reward strategy, not static roster management.",
+  "Architecture: Delivered a React Native frontend with secure auth and MongoDB backed APIs.",
 ];
 
 const demoLinks = [
-  // Update these as you want.
   { label: "View Repository", href: "https://github.com/siraajkudtarkar/wildcat" },
-  // If you have a hosted API, TestFlight, or Expo publish link, add it here.
   { label: "View Demo Walkthrough", href: "https://drive.google.com/file/d/1QKyx9x4PvjuNYRLGT25ObCLNkpieI5Gk/view?usp=sharing" },
 ];
 
@@ -27,60 +27,54 @@ const highlightGroups = [
   {
     title: "Execution",
     items: [
-      "Core app — Built fast matchup flows in React Native Expo.",
-      "Gameplay UX — Added lineup control, standings, and multiplier-based scoring visibility.",
-      "Testing — Created demo mode with seeded accounts and stable weekly test data.",
+      "Core app: Built fast matchup flows in React Native Expo.",
+      "Gameplay UX: Added lineup control, standings, and multiplier based scoring visibility.",
+      "Testing: Created demo mode with seeded accounts and stable weekly test data.",
     ],
   },
   {
     title: "Backend Impact",
     items: [
-      "Security — Implemented authentication with bcrypt + JWT.",
-      "Scoring engine — Built multiplier logic and weekly result computation.",
-      "Integrations — Pulled live NFL data via Sleeper API and exposed team/matchup endpoints.",
+      "Security: Implemented authentication with bcrypt and JWT.",
+      "Scoring engine: Built multiplier logic and weekly result computation.",
+      "Integrations: Pulled live NFL data via Sleeper API and exposed team and matchup endpoints.",
     ],
   },
 ];
 
-const stackDev = [
-  "React Native",
-  "JavaScript",
-  "Express",
-  "Expo",
-  "REST APIs",
-  "MongoDB",
-  "JWT Authentication",
-  "bcrypt",
-  "Jest",
-];
+const homepagePills = ["React Native", "JavaScript", "Express", "Expo", "MongoDB", "Node", "REST APIs", "Frontend Development", "Full-Stack Development"];
+
+const stackDev = [...homepagePills];
 
 const stackDesign = [
   "Mobile-first UX (weekly matchup flows)",
   "Demo mode and test data for grading",
   "Risk and reward gameplay design",
-  "Iteration based on feature scope and feasibility",
 ];
 
 const outcomes = [
-  "Delivery — Shipped a playable fantasy experience with differentiated multiplier mechanics.",
-  "Coverage — Completed auth, matchup flow, standings, scoring, and backend setup.",
-  "Scalability — Established a base for multi-team league expansion.",
-  "Technical growth — Strengthened full-stack integration across mobile client and API.",
+  "Delivery: Shipped a playable fantasy experience with differentiated multiplier mechanics.",
+  "Coverage: Completed auth, matchup flow, standings, scoring, and backend setup.",
+  "Scalability: Established a base for multi team league expansion.",
+  "Learning: Strengthened full stack integration across mobile client and API.",
 ];
 
 const nextSteps = [
-  "Data depth — Expand player and weekly coverage beyond current API source.",
-  "League scale — Support more teams per league.",
-  "Game strategy — Integrate betting-odds data for richer multiplier logic.",
-  "Onboarding — Improve league creation and invite reliability.",
+  "Data depth: Expand player and weekly coverage beyond current API source.",
+  "League scale: Support more teams per league.",
+  "Game strategy: Integrate betting odds data for richer multiplier logic.",
+  "Onboarding: Improve league creation and invite reliability.",
 ];
 
+const wildcatDemoVimeoUrl = "https://player.vimeo.com/video/1167948725?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
+
 const renderImpactLine = (line: string) => {
-  const [lead, ...rest] = line.split(" — ");
+  const [lead, ...rest] = line.split(": ");
+  if (!rest.length) return <>{line}</>;
   return (
     <>
       <strong>{lead}</strong>
-      {rest.length ? ` — ${rest.join(" — ")}` : ""}
+      {rest.length ? `: ${rest.join(": ")}` : ""}
     </>
   );
 };
@@ -128,20 +122,19 @@ export default function WildcatPage() {
           </div>
         </div>
 
+        <section className="mt-6 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-6 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
+          <p className="text-2xl font-semibold leading-tight text-[#2e1c10] sm:text-3xl dark:text-white">
+            How can fantasy football feel less predictable and reward better strategy each week?
+          </p>
+        </section>
+
         <header className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-lg shadow-[#2e1c10]/10 backdrop-blur dark:border-[#3b2a1f] dark:bg-black">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-[#5a4030] dark:text-white">
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Mobile app
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Fantasy football
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Betting-style gameplay
-            </span>
-            <span className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-              Full stack
-            </span>
+            {homepagePills.map((pill) => (
+              <span key={pill} className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
+                {pill}
+              </span>
+            ))}
           </div>
 
           <div className="space-y-3">
@@ -149,20 +142,37 @@ export default function WildcatPage() {
             <h1 className="text-3xl font-semibold">Wildcat Fantasy Football</h1>
             <p className="text-sm font-semibold text-[#7a5a42] dark:text-[#cbb8aa]">Sports &amp; Entertainment</p>
             <p className="text-base leading-7 text-[#5a4030] dark:text-white">
-              A fantasy football mobile app for players who want a more unpredictable experience, with a bet-based
-              multiplier system that adds risk and reward into weekly matchups.
+              A fantasy football mobile app for players who want a less predictable experience. I added a bet-based
+              multiplier system that brings real risk and reward to weekly matchups.
+            </p>
+            <p className="text-base leading-7 text-[#5a4030] dark:text-white">
+              I built Wildcat for players who think standard fantasy is predictable. It emphasizes <strong>strategy under uncertainty</strong> and makes each week feel high stakes.
             </p>
 
             {/* Optional: swap placeholders for real screenshots like MeTime */}
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="flex aspect-[9/19.5] items-center justify-center overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 text-sm text-[#7a5a42] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-[#cbb8aa]">
-                <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-cover" />
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+              <div className="flex items-center justify-center">
+                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c] -mt-4">
+                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
+                    <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-contain" />
+                  </div>
+                </div>
               </div>
-              <div className="flex aspect-[9/19.5] items-center justify-center overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 text-sm text-[#7a5a42] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-[#cbb8aa]">
-                <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-cover" />
+              <div className="flex items-center justify-center">
+                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c]">
+                  <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
+                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
+                    <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-contain" />
+                  </div>
+                </div>
               </div>
-              <div className="flex aspect-[9/19.5] items-center justify-center overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 text-sm text-[#7a5a42] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-[#cbb8aa]">
-                <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-cover" />
+              <div className="flex items-center justify-center">
+                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c]">
+                  <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
+                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
+                    <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-contain" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -213,8 +223,18 @@ export default function WildcatPage() {
         <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-black">
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
-            <div className="mx-auto flex aspect-[9/19.5] w-full max-w-[360px] items-center justify-center overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 text-sm text-[#7a5a42] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-[#cbb8aa]">
-              <Image src={wildcatMatchup} alt="Wildcat Fantasy Football demo preview" className="h-full w-full object-cover" />
+            <div className="mx-auto flex items-center justify-center">
+              <div className="relative aspect-[9/19] w-full max-w-[300px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
+                <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
+                <div className="relative h-full w-full overflow-hidden rounded-t-[1.9rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.9rem] dark:bg-[#111111]">
+                  <VimeoEmbed
+                    src={wildcatDemoVimeoUrl}
+                    title="Wildcat Fantasy Football demo preview"
+                    className="h-full w-full"
+                    cover
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -248,7 +268,7 @@ export default function WildcatPage() {
                 <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
                   {group.items.map((item) => (
                     <li key={item} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
+                      <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
                       <span>{renderImpactLine(item)}</span>
                     </li>
                   ))}
@@ -263,7 +283,7 @@ export default function WildcatPage() {
           <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
             {outcomes.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
+                <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
                 <span>{renderImpactLine(item)}</span>
               </li>
             ))}
@@ -274,7 +294,7 @@ export default function WildcatPage() {
             <ul className="mt-2 space-y-2 text-sm leading-6">
               {nextSteps.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
+                  <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
                   <span>{renderImpactLine(item)}</span>
                 </li>
               ))}
@@ -282,16 +302,14 @@ export default function WildcatPage() {
           </div>
         </section>
 
-        <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
+        <div className="mt-8 flex flex-wrap gap-3 text-base font-semibold">
           <Link
-            className="inline-flex items-center gap-2 rounded-full bg-[#9d5e34] px-5 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#7f4b28] bg-[#8a4a2b] px-6 py-3 text-white shadow-md shadow-[#2e1c10]/20 transition hover:-translate-y-0.5 hover:bg-[#6f3b22] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/30 dark:border-[#e6d8c8] dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
             href="/#contact"
           >
-            Contact me about this
+            Questions? Contact me
           </Link>
         </div>
-
-        <SiteFooter projectPage />
       </main>
     </div>
   );

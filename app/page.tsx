@@ -5,10 +5,12 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type FormEvent, type MouseEvent } from "react";
 import SiteFooter from "./SiteFooter";
 import { useTheme } from "./ThemeProvider";
-import finalBuzzerDashboard from "./finalbuzzer/The Final Buzzer Mobile.png";
-import codiHome from "./codi/Codi Home.png";
-import wildcatMatchups from "./wildcat/Wildcat Matchups.png";
-import meTimeHomeFeed from "./metime/MeTime Screen Home Feed.png";
+import VimeoEmbed from "./VimeoEmbed";
+
+const codiDemoUrl = "https://player.vimeo.com/video/1167947118?autoplay=1&muted=1&loop=1&autopause=0&background=1";
+const finalBuzzerDemoUrl = "https://player.vimeo.com/video/1167948538?autoplay=1&muted=1&loop=1&autopause=0&background=1";
+const wildcatDemoUrl = "https://player.vimeo.com/video/1167948725?autoplay=1&muted=1&loop=1&autopause=0&background=1";
+const meTimeDemoUrl = "https://player.vimeo.com/video/1167950147?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 
 type ProjectOverlayState = {
   href: string;
@@ -19,29 +21,29 @@ const projects = [
   {
     title: "Codi",
     productType: "healthcare",
-    summary: "Designed a collaborative mobile application for children with diabetes and parents supported by University of Michigan-backed research study.",
-    stack: ["React Native", "TypeScript", "Firebase", "OpenAI", "UX Design & Research"],
+    summary: "Designed a collaborative mobile application for children with diabetes and parents supported by a University of Michigan-backed research study.",
+    stack: ["React Native", "TypeScript", "Firebase", "OpenAI", "Expo", "Node", "Frontend Development", "Full-Stack Development", "UX Design & Research", "Cross Collaboration"],
     link: "/codi",
   },
   {
     title: "The Final Buzzer",
     productType: "Education",
     summary: "Built a web application with a real-time exam countdown and dashboard so students can compare planned vs. actual study time and stay on track.",
-    stack: ["React", "Node", "JavaScript", "HTML/CSS", "Web Accessibility"],
+    stack: ["React", "Node", "JavaScript", "HTML/CSS", "Frontend Development", "Web Accessibility"],
     link: "/finalbuzzer",
   },
   {
     title: "Wildcat Fantasy Football",
     productType: "Sports & Entertainment",
     summary: "Created a fantasy football mobile application with a unique and unpredictable twist: betting on your players to win big or lose big, adding creativity, strategy, and risk-taking.",
-    stack: ["React Native", "JavaScript", "Express", "Expo", "MongoDB"],
+    stack: ["React Native", "JavaScript", "Express", "Expo", "MongoDB", "Node", "REST APIs", "Frontend Development", "Full-Stack Development"],
     link: "/wildcat",
   },
   {
     title: "MeTime",
     productType: "health & wellness",
     summary: "Developed a solution for sustainable wellness habits among busy students — won Boston University's Catalyst Designathon and the UCR Blackstone Launchpad Ideas Competition.",
-    stack: ["Next.js", "Google Cloud API", "MongoDB", "Figma", "UX Design & Research"],
+    stack: ["Figma", "UI/UX Design", "UX Research", "Next.js", "JavaScript", "HTML/CSS", "Google Cloud API", "MongoDB", "Cross Collaboration"],
     link: "/metime",
   },
 ];
@@ -55,12 +57,18 @@ const skills = [
   "TypeScript",
   "React",
   "React Native",
+  "Expo",
+  "Next.js",
+  "Node",
+  "HTML/CSS",
+  "Express",
   "C/C++",
   "REST APIs",
   "Python",
   "Firebase",
   "MongoDB",
   "Cross Collaboration",
+  "Web Accessibility",
 ];
 
 const topRowSkills = skills.slice(0, 6);
@@ -73,6 +81,7 @@ export default function Home() {
   const [projectOverlay, setProjectOverlay] = useState<ProjectOverlayState | null>(null);
   const [tappedProjectCard, setTappedProjectCard] = useState<"wildcat" | "metime" | null>(null);
   const [isTouchPreviewDevice, setIsTouchPreviewDevice] = useState(false);
+  const [activeSkills, setActiveSkills] = useState<string[]>([]);
   const [contactSubmitState, setContactSubmitState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const { theme, setTheme } = useTheme();
 
@@ -159,6 +168,30 @@ export default function Home() {
     });
   };
 
+  const toggleActiveSkill = (skill: string) => {
+    setActiveSkills((current) =>
+      current.includes(skill) ? current.filter((item) => item !== skill) : [...current, skill],
+    );
+  };
+
+  const clearActiveSkills = () => {
+    setActiveSkills([]);
+  };
+
+  const isSkillHighlighted = (skill: string) => activeSkills.includes(skill);
+
+  const getProjectSkillPillClass = (tech: string) => {
+    if (isSkillHighlighted(tech)) {
+      return "bg-[#9d5e34] text-white dark:bg-[#f7ede4] dark:text-[#2e1c10]";
+    }
+
+    if (activeSkills.length > 0) {
+      return "bg-[#f6ebdf]/55 text-[#7a5a42] dark:bg-[#2a1b12]/55 dark:text-[#cbb8aa]";
+    }
+
+    return "bg-[#f6ebdf] text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]";
+  };
+
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (contactSubmitState === "sending") return;
@@ -203,46 +236,72 @@ export default function Home() {
             <a className="text-lg font-semibold tracking-tight" href="#top">
               Siraaj Kudtarkar
             </a>
-            <div className="flex items-center gap-1 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-1.5 py-1 shadow-sm dark:border-[#3b2a1f] dark:bg-[#1a120c]">
-              {(["light", "dark", "system"] as const).map((mode) => {
-                const active = theme === mode;
-                const label = mode === "light" ? "Light mode" : mode === "dark" ? "Dark mode" : "System setting";
-                const icon = mode === "light"
-                  ? (
-                      <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round">
-                        <circle cx="12" cy="12" r="4.2" />
-                        <path d="M12 3v2.1M12 18.9V21M4.5 12H6.6M17.4 12h2.1M6.05 6.05l1.49 1.49M16.46 16.46l1.49 1.49M6.05 17.95l1.49-1.49M16.46 7.54l1.49-1.49" />
-                      </svg>
-                    )
-                  : mode === "dark"
-                  ? (
-                      <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M19.5 15.5A7.5 7.5 0 0 1 9 5a7.5 7.5 0 1 0 10.5 10.5Z" />
-                      </svg>
-                    )
-                  : (
-                      <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="4" y="5" width="16" height="12" rx="1.6" />
-                        <path d="M9.5 19h5M12 17v2" />
-                      </svg>
-                    );
-                return (
-                  <button
-                    key={mode}
-                    type="button"
-                    className={`flex items-center justify-center rounded-full p-2 transition ${
-                      active
-                        ? "bg-[#9d5e34] text-white shadow-inner shadow-[#2e1c10]/15"
-                        : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#f7ede4] dark:hover:bg-[#2a1b12]"
-                    }`}
-                    aria-label={label}
-                    title={label}
-                    onClick={() => setTheme(mode)}
-                  >
-                    {icon}
-                  </button>
-                );
-              })}
+            <div className="flex items-center gap-2">
+              <a
+                className="inline-flex items-center justify-center rounded-full border border-[#e6d8c8] bg-[#fffbf7] p-2 text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+                href="https://github.com/siraajkudtarkar"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current">
+                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.45-2.69 5.43-5.25 5.71.41.35.77 1.05.77 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                </svg>
+              </a>
+              <a
+                className="inline-flex items-center justify-center rounded-full border border-[#e6d8c8] bg-[#fffbf7] p-2 text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+                href="https://www.linkedin.com/in/siraaj-kudtarkar"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current">
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 8.98h3.96V21H3V8.98Zm6.74 0H14v1.65h.06c.42-.8 1.44-1.65 2.96-1.65C20.12 8.98 21 11 21 14.13V21h-3.96v-6.06c0-1.45-.03-3.3-2.01-3.3-2.02 0-2.33 1.58-2.33 3.2V21H8.74V8.98Z" />
+                </svg>
+              </a>
+              <div className="flex items-center gap-1 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-1.5 py-1 shadow-sm dark:border-[#3b2a1f] dark:bg-[#1a120c]">
+                {(["light", "dark", "system"] as const).map((mode) => {
+                  const active = theme === mode;
+                  const label = mode === "light" ? "Light mode" : mode === "dark" ? "Dark mode" : "System setting";
+                  const icon = mode === "light"
+                    ? (
+                        <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round">
+                          <circle cx="12" cy="12" r="4.2" />
+                          <path d="M12 3v2.1M12 18.9V21M4.5 12H6.6M17.4 12h2.1M6.05 6.05l1.49 1.49M16.46 16.46l1.49 1.49M6.05 17.95l1.49-1.49M16.46 7.54l1.49-1.49" />
+                        </svg>
+                      )
+                    : mode === "dark"
+                    ? (
+                        <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M19.5 15.5A7.5 7.5 0 0 1 9 5a7.5 7.5 0 1 0 10.5 10.5Z" />
+                        </svg>
+                      )
+                    : (
+                        <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="4" y="5" width="16" height="12" rx="1.6" />
+                          <path d="M9.5 19h5M12 17v2" />
+                        </svg>
+                      );
+                  return (
+                    <button
+                      key={mode}
+                      type="button"
+                      className={`flex items-center justify-center rounded-full p-2 transition ${
+                        active
+                          ? "bg-[#9d5e34] text-white shadow-inner shadow-[#2e1c10]/15"
+                          : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#f7ede4] dark:hover:bg-[#2a1b12]"
+                      }`}
+                      aria-label={label}
+                      title={label}
+                      onClick={() => setTheme(mode)}
+                    >
+                      {icon}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-5 gap-4 text-sm font-semibold">
@@ -273,47 +332,73 @@ export default function Home() {
           id="home"
           className="flex flex-col gap-10 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-8 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]"
         >
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-3 py-1 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10Z" />
+                <circle cx="12" cy="11" r="2.2" />
+              </svg>
+              Ann Arbor, MI <span aria-hidden>•</span> Willing to Relocate
+            </span>
+
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
+              <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center" aria-hidden>
+                <motion.span
+                  className="absolute inline-flex h-full w-full rounded-full border border-emerald-400/70"
+                  initial={{ opacity: 0.22, scale: 0.88 }}
+                  animate={{ opacity: [0.22, 0.68, 0.22], scale: [0.88, 1.2, 0.88] }}
+                  transition={{ duration: 2.2, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+                />
+                <motion.span
+                  className="relative h-2 w-2 rounded-full bg-emerald-500"
+                  initial={{ opacity: 0.8 }}
+                  animate={{ opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 1.8, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+                />
+              </span>
+              Open to Work
+            </span>
+          </div>
+
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:gap-6">
-              <div className="relative h-72 w-72 overflow-hidden rounded-3xl">
-                <Image
-                  src="/headshot_edited.png"
-                  alt="Portrait of Siraaj Kudtarkar"
-                  fill
-                  sizes="(max-width: 640px) 260px, 320px"
-                  className="object-cover object-top scale-110"
-                  priority
-                />
+              <div className="h-80 w-80 rounded-3xl border border-[#e6d8c8] bg-[#fffcf8]/95 p-2 shadow-inner shadow-[#2e1c10]/6 sm:h-[22rem] sm:w-[22rem] dark:border-[#3b2a1f] dark:bg-[#1f130c]">
+                <div className="relative h-full w-full overflow-hidden rounded-2xl">
+                  <Image
+                    src="/headshot_edited.png"
+                    alt="Portrait of Siraaj Kudtarkar"
+                    fill
+                    sizes="(max-width: 640px) 320px, 352px"
+                    className="object-cover object-top scale-110"
+                    priority
+                  />
+                </div>
               </div>
             </div>
             <div className="space-y-6">
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm uppercase tracking-[0.24em] text-[#7a5a42] dark:text-[#d7c4b6]">Hi there! 👋🏾</p>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
-                    <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center" aria-hidden>
-                      <motion.span
-                        className="absolute inline-flex h-full w-full rounded-full border border-emerald-400/70"
-                        initial={{ opacity: 0.22, scale: 0.88 }}
-                        animate={{ opacity: [0.22, 0.68, 0.22], scale: [0.88, 1.2, 0.88] }}
-                        transition={{ duration: 2.2, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-                      />
-                      <motion.span
-                        className="relative h-2 w-2 rounded-full bg-emerald-500"
-                        initial={{ opacity: 0.8 }}
-                        animate={{ opacity: [0.8, 1, 0.8] }}
-                        transition={{ duration: 1.8, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-                      />
-                    </span>
-                    Open to Work
-                  </span>
                 </div>
                 <h1 className="text-3xl font-semibold sm:text-4xl">Siraaj Kudtarkar</h1>
                 <p className="text-lg text-[#5a4030] dark:text-[#e4d4c6]">
-                  Second-year Master’s of Information student at the University of Michigan specializing in User-Centric Agile Development, with a Computer Science degree from UC Riverside. UX Engineer focused on educational and health software technologies.
+                  I’m a UX Engineer focused on educational and health software technologies, and I am open to roles in UX, product, and software engineering.
                 </p>
+                <div className="pt-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">Education</p>
+                  <div className="mt-2 space-y-2.5">
+                    <div className="flex items-start gap-2">
+                      <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
+                      <p>M.S. in Information Science at University of Michigan, specializing in User-Centric Agile Development (Expected May 2026)</p>
+                    </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
+                    <p>B.S. in Computer Science at UC Riverside (Graduated Sept. 2023)</p>
+                  </div>
+                  </div>
+                </div>
               </div>
-              <div className="inline-grid w-fit grid-cols-2 gap-2 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
+              <div className="mx-auto inline-grid w-fit grid-cols-2 gap-2 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                 <a className="col-span-2 inline-flex w-full items-center justify-center rounded-full bg-[#9d5e34] px-5 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]" href="#work">
                   View Work
                 </a>
@@ -330,7 +415,21 @@ export default function Home() {
           </div>
 
           <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffcf8]/95 p-6 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-[#1f130c]">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#7a5a42] dark:text-[#d7c4b6]">Skills</p>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7a5a42] dark:text-[#d7c4b6]">Skills</p>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-medium text-[#8b6a54] dark:text-[#cbb8aa]">Click to Filter</span>
+                {activeSkills.length > 0 ? (
+                  <button
+                    type="button"
+                    className="inline-flex items-center rounded-full border border-[#d7c2ad] bg-[#fffbf7] px-3 py-1 text-xs font-semibold text-[#6b4b35] transition hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#5a3e2c] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:bg-[#2a1b12]"
+                    onClick={clearActiveSkills}
+                  >
+                    Clear
+                  </button>
+                ) : null}
+              </div>
+            </div>
             <div className="space-y-3 text-sm text-[#5a4030] dark:text-[#e4d4c6]">
               <div className="overflow-hidden">
                 <motion.div
@@ -351,9 +450,19 @@ export default function Home() {
                   }
                 >
                   {[...topRowSkills, ...topRowSkills].map((skill, index) => (
-                    <span key={`top-${skill}-${index}`} className="whitespace-nowrap rounded-full bg-[#f6ebdf] px-3 py-1 font-medium text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                    <button
+                      key={`top-${skill}-${index}`}
+                      type="button"
+                      aria-pressed={isSkillHighlighted(skill)}
+                      onClick={() => toggleActiveSkill(skill)}
+                      className={`whitespace-nowrap rounded-full px-3 py-1 font-medium transition ${
+                        isSkillHighlighted(skill)
+                          ? "bg-[#9d5e34] text-white dark:bg-[#f7ede4] dark:text-[#2e1c10]"
+                          : "bg-[#f6ebdf] text-[#2e1c10] hover:bg-[#ead9c8] dark:bg-[#2a1b12] dark:text-[#f7ede4] dark:hover:bg-[#3a2618]"
+                      }`}
+                    >
                       {skill}
-                    </span>
+                    </button>
                   ))}
                 </motion.div>
               </div>
@@ -376,17 +485,24 @@ export default function Home() {
                   }
                 >
                   {[...bottomRowSkills, ...bottomRowSkills].map((skill, index) => (
-                    <span key={`bottom-${skill}-${index}`} className="whitespace-nowrap rounded-full bg-[#f6ebdf] px-3 py-1 font-medium text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                    <button
+                      key={`bottom-${skill}-${index}`}
+                      type="button"
+                      aria-pressed={isSkillHighlighted(skill)}
+                      onClick={() => toggleActiveSkill(skill)}
+                      className={`whitespace-nowrap rounded-full px-3 py-1 font-medium transition ${
+                        isSkillHighlighted(skill)
+                          ? "bg-[#9d5e34] text-white dark:bg-[#f7ede4] dark:text-[#2e1c10]"
+                          : "bg-[#f6ebdf] text-[#2e1c10] hover:bg-[#ead9c8] dark:bg-[#2a1b12] dark:text-[#f7ede4] dark:hover:bg-[#3a2618]"
+                      }`}
+                    >
                       {skill}
-                    </span>
+                    </button>
                   ))}
                 </motion.div>
               </div>
             </div>
           </div>
-          <p className="mt-4 text-center text-sm text-[#7a5a42] dark:text-[#d7c4b6]">
-            Currently seeking full-time UX engineering, product engineering, and software engineering roles in the United States.
-          </p>
         </header>
 
         <section id="work" className="scroll-mt-24 space-y-8 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-10 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]">
@@ -400,12 +516,18 @@ export default function Home() {
           <div className="space-y-8">
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4">
-                  <Image
-                    src={codiHome}
-                    alt="Codi home mockup"
-                    className="h-auto max-h-[500px] w-auto max-w-full rounded-xl object-contain object-center"
-                  />
+                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
+                  <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
+                    <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
+                      <VimeoEmbed
+                        src={codiDemoUrl}
+                        title="Codi demo"
+                        className="h-full w-full"
+                        iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
+                        cover
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#2e1c10] transition group-hover:text-[#8a4a2b] dark:text-[#f7ede4] dark:group-hover:text-[#c58c5c]">{codiProject.title}</h3>
@@ -413,7 +535,7 @@ export default function Home() {
                   <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{codiProject.summary}</p>
                   <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                     {codiProject.stack.map((tech) => (
-                      <span key={tech} className="rounded-full bg-[#f6ebdf] px-3.5 py-1.5 text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                      <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -429,12 +551,19 @@ export default function Home() {
 
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4">
-                  <Image
-                    src={finalBuzzerDashboard}
-                    alt="The Final Buzzer mockup"
-                    className="h-auto max-h-[500px] w-auto max-w-full rounded-xl object-contain object-center"
-                  />
+                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
+                  <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
+                    <div className="pointer-events-none absolute left-1/2 top-[6px] h-[16px] w-[96px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
+                    <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
+                      <VimeoEmbed
+                        src={finalBuzzerDemoUrl}
+                        title="The Final Buzzer mobile demo"
+                        className="h-full w-full"
+                        iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
+                        cover
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#2e1c10] transition group-hover:text-[#8a4a2b] dark:text-[#f7ede4] dark:group-hover:text-[#c58c5c]">{finalBuzzerProject.title}</h3>
@@ -442,7 +571,7 @@ export default function Home() {
                   <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{finalBuzzerProject.summary}</p>
                   <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                     {finalBuzzerProject.stack.map((tech) => (
-                      <span key={tech} className="rounded-full bg-[#f6ebdf] px-3.5 py-1.5 text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                      <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -475,7 +604,7 @@ export default function Home() {
                     <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{wildcatProject.summary}</p>
                     <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                       {wildcatProject.stack.map((tech) => (
-                        <span key={tech} className="rounded-full bg-[#f6ebdf] px-3.5 py-1.5 text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                        <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
@@ -494,12 +623,18 @@ export default function Home() {
                 <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-6 transition duration-300 group-hover:opacity-100 ${
                   isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-100" : "opacity-0"
                 }`}>
-                  <div className="flex h-full w-full items-center justify-center pb-16">
-                    <Image
-                      src={wildcatMatchups}
-                      alt="Wildcat Fantasy Football mockup"
-                      className="h-full max-h-[420px] w-auto max-w-full rounded-xl object-contain"
-                    />
+                  <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
+                    <div className="relative aspect-[9/20.5] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
+                      <div className="relative h-full w-full overflow-hidden bg-[#fffdf9] dark:bg-[#111111]">
+                        <VimeoEmbed
+                          src={wildcatDemoUrl}
+                          title="Wildcat Fantasy Football demo"
+                          className="h-full w-full"
+                          iframeClassName="h-full w-full"
+                          cover
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6">
                     <div className="flex items-center justify-end text-base font-semibold text-[#8a4a2b] dark:text-[#c58c5c]">
@@ -533,7 +668,7 @@ export default function Home() {
                     <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{meTimeProject.summary}</p>
                     <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                       {meTimeProject.stack.map((tech) => (
-                        <span key={tech} className="rounded-full bg-[#f6ebdf] px-3.5 py-1.5 text-[#2e1c10] dark:bg-[#2a1b12] dark:text-[#f7ede4]">
+                        <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
@@ -552,12 +687,19 @@ export default function Home() {
                 <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-6 transition duration-300 group-hover:opacity-100 ${
                   isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-100" : "opacity-0"
                 }`}>
-                  <div className="flex h-full w-full items-center justify-center pb-16">
-                    <Image
-                      src={meTimeHomeFeed}
-                      alt="MeTime mockup"
-                      className="h-full max-h-[420px] w-auto max-w-full rounded-xl object-contain"
-                    />
+                  <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
+                    <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
+                      <div className="pointer-events-none absolute left-1/2 top-[6px] h-[16px] w-[96px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
+                      <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
+                        <VimeoEmbed
+                          src={meTimeDemoUrl}
+                          title="MeTime demo"
+                          className="h-full w-full"
+                          iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
+                          cover
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6">
                     <div className="flex items-center justify-end text-base font-semibold text-[#8a4a2b] dark:text-[#c58c5c]">
@@ -619,7 +761,7 @@ export default function Home() {
                         alt="Chill guy"
                         width={48}
                         height={48}
-                        className="h-12 w-12 object-contain"
+                        className="h-12 w-12 rounded-full border border-[#c9a988] bg-[#fff7ef] p-1 object-contain shadow-sm dark:border-[#5a3e2c] dark:bg-[#1f140e]"
                       />
                   </>
                 )}
@@ -628,56 +770,62 @@ export default function Home() {
           </div>
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
             <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">Who I am:</p>
+              {/* <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">Who I am:</p> */}
               <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">
                 {isProfessional
                   ? "I enjoy building research-driven, accessible digital products that bridge design and engineering."
-                  : "In my spare time, I love reading, weight lifting, and playing tennis. I also express my creative side through cooking and music! If you're reading this, feel free to reach out and send me a message!"}
+                  : "In my spare time, I love reading, weight lifting, and playing tennis. I also express my creative side through cooking and music. If you're reading this, feel free to reach out and send me a message!"}
               </p>
             </div>
-            <div className={`space-y-3 text-sm text-[#5a4030] transition-[padding] dark:text-[#e4d4c6] ${!isProfessional ? "lg:pt-2" : ""}`}>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">{isProfessional ? "What I do:" : "Fun facts:"}</p>
+            <div className="space-y-3 text-sm text-[#5a4030] dark:text-[#e4d4c6]">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">{isProfessional ? "What I do for work" : "What I do for fun"}</p>
               {isProfessional ? (
                 <>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
                     <p>UX Engineering & Front-End Development (React, React Native, JavaScript)</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
                     <p>Web & Mobile Application Development</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
                     <p>UI/UX Design & Research (usability testing, prototyping, wireframing)</p>
                   </div>
                 </>
               ) : (
                 <>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
-                    <p>I am a huge foodie and have an endless list of restaurants in my &quot;Want to Go&quot; on Google Maps.</p>
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
+                    <p>I am a huge foodie and have an endless list of restaurants in my &quot;Want to Go&quot; on Google Maps</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                    <p>All I need are my headphones and freshly made masala chai.</p>
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
+                    <p>All I need are my headphones and freshly made masala chai</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
-                    <p>Likely playing sports videogames or watching live sports.</p>
+                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
+                    <p>At any point, I am likely playing sports videogames or watching live sports</p>
                   </div>
                 </>
               )}
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               className="inline-flex items-center gap-2 rounded-full bg-[#9d5e34] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#2e1c10]/15 transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
-              href={isProfessional ? "/resume.pdf" : "#contact"}
-              target={isProfessional ? "_blank" : undefined}
-              rel={isProfessional ? "noopener noreferrer" : undefined}
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {isProfessional ? "View Resume" : "Send Message to Siraaj"}
+              View Resume
+            </a>
+            <a
+              className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-5 py-3 text-sm font-semibold text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+              href="#contact"
+            >
+              Send Message
             </a>
           </div>
         </section>
