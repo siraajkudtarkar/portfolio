@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import IPhoneFrame from "../IPhoneFrame";
 import SiteFooter from "../SiteFooter";
 import VimeoEmbed from "../VimeoEmbed";
 import wildcatHome from "./Wildcat Home.png";
@@ -152,27 +153,19 @@ export default function WildcatPage() {
             {/* Optional: swap placeholders for real screenshots like MeTime */}
             <div className="mt-4 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c] -mt-4">
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c]">
-                  <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[175px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[230px] dark:border-[#4a3324] dark:bg-[#18110c]">
-                  <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
             </div>
           </div>
@@ -224,17 +217,15 @@ export default function WildcatPage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <div className="mx-auto flex items-center justify-center">
-              <div className="relative aspect-[9/19] w-full max-w-[300px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                <div className="pointer-events-none absolute left-1/2 top-[7px] h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
-                <div className="relative h-full w-full overflow-hidden rounded-t-[1.9rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.9rem] dark:bg-[#111111]">
-                  <VimeoEmbed
-                    src={wildcatDemoVimeoUrl}
-                    title="Wildcat Fantasy Football demo preview"
-                    className="h-full w-full"
-                    cover
-                  />
-                </div>
-              </div>
+              <IPhoneFrame className="max-w-[300px]">
+                <VimeoEmbed
+                  src={wildcatDemoVimeoUrl}
+                  title="Wildcat Fantasy Football demo preview"
+                  className="h-full w-full"
+                  iframeClassName="h-full w-full"
+                  cover
+                />
+              </IPhoneFrame>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">

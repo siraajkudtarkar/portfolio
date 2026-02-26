@@ -2,6 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { useState } from "react";
+import IPhoneFrame from "../IPhoneFrame";
 import VimeoEmbed from "../VimeoEmbed";
 
 type ViewMode = "desktop" | "mobile";
@@ -59,7 +60,7 @@ export default function HeroMediaPicker({
       </div>
 
       {viewMode === "desktop" ? (
-        <div className="mx-auto w-full max-w-[920px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-4 shadow-sm dark:border-[#3b2a1f] dark:bg-black">
+        <div className="mx-auto -mx-2 w-[calc(100%+1rem)] max-w-[980px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 shadow-sm sm:mx-auto sm:w-full sm:p-4 dark:border-[#3b2a1f] dark:bg-black">
           {desktopVimeoUrl ? (
             <VimeoEmbed
               src={desktopVimeoUrl}
@@ -79,26 +80,24 @@ export default function HeroMediaPicker({
       ) : (
         mobileIphoneFrame ? (
           <div className="mx-auto flex items-center justify-center pb-4">
-            <div className="relative aspect-[9/20.5] w-full max-w-[300px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-              <div className="relative h-full w-full overflow-hidden bg-[#fffdf9] dark:bg-[#111111]">
-                {mobileVimeoUrl ? (
-                  <VimeoEmbed
-                    src={mobileVimeoUrl}
-                    title={mobileAlt}
-                    className="h-full w-full"
-                    iframeClassName="h-full w-full"
-                    cover
-                  />
-                ) : (
-                  <Image
-                    src={mobileImage}
-                    alt={mobileAlt}
-                    className="h-full w-full object-contain"
-                    unoptimized
-                  />
-                )}
-              </div>
-            </div>
+            <IPhoneFrame className={mobileVimeoUrl ? "max-w-[300px]" : "max-w-[190px] sm:max-w-[190px]"}>
+              {mobileVimeoUrl ? (
+                <VimeoEmbed
+                  src={mobileVimeoUrl}
+                  title={mobileAlt}
+                  className="h-full w-full"
+                  iframeClassName="h-full w-full"
+                  cover
+                />
+              ) : (
+                <Image
+                  src={mobileImage}
+                  alt={mobileAlt}
+                  className="h-full w-full object-contain"
+                  unoptimized
+                />
+              )}
+            </IPhoneFrame>
           </div>
         ) : (
           <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-3 shadow-sm dark:border-[#3b2a1f] dark:bg-black">

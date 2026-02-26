@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type FormEvent, type MouseEvent } from "react";
 import SiteFooter from "./SiteFooter";
+import IPhoneFrame from "./IPhoneFrame";
 import { useTheme } from "./ThemeProvider";
 import VimeoEmbed from "./VimeoEmbed";
 
@@ -362,7 +363,7 @@ export default function Home() {
 
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:gap-6">
-              <div className="h-80 w-80 rounded-3xl border border-[#e6d8c8] bg-[#fffcf8]/95 p-2 shadow-inner shadow-[#2e1c10]/6 sm:h-[22rem] sm:w-[22rem] dark:border-[#3b2a1f] dark:bg-[#1f130c]">
+              <div className="h-80 w-80 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9] p-2 shadow-inner shadow-[#2e1c10]/6 sm:h-[22rem] sm:w-[22rem] dark:border-[#3b2a1f] dark:bg-[#24160d]">
                 <div className="relative h-full w-full overflow-hidden rounded-2xl">
                   <Image
                     src="/headshot_edited.png"
@@ -418,7 +419,7 @@ export default function Home() {
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7a5a42] dark:text-[#d7c4b6]">Skills</p>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-medium text-[#8b6a54] dark:text-[#cbb8aa]">Click to Filter</span>
+                <span className="text-[11px] font-medium text-[#8b6a54] dark:text-[#cbb8aa]">Click to Highlight Skills in Projects</span>
                 {activeSkills.length > 0 ? (
                   <button
                     type="button"
@@ -517,17 +518,15 @@ export default function Home() {
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
-                  <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                    <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
-                      <VimeoEmbed
-                        src={codiDemoUrl}
-                        title="Codi demo"
-                        className="h-full w-full"
-                        iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
-                        cover
-                      />
-                    </div>
-                  </div>
+                  <IPhoneFrame>
+                    <VimeoEmbed
+                      src={codiDemoUrl}
+                      title="Codi demo"
+                      className="h-full w-full"
+                      iframeClassName="h-full w-full"
+                      cover
+                    />
+                  </IPhoneFrame>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#2e1c10] transition group-hover:text-[#8a4a2b] dark:text-[#f7ede4] dark:group-hover:text-[#c58c5c]">{codiProject.title}</h3>
@@ -552,18 +551,15 @@ export default function Home() {
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
-                  <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                    <div className="pointer-events-none absolute left-1/2 top-[6px] h-[16px] w-[96px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
-                    <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
-                      <VimeoEmbed
-                        src={finalBuzzerDemoUrl}
-                        title="The Final Buzzer mobile demo"
-                        className="h-full w-full"
-                        iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
-                        cover
-                      />
-                    </div>
-                  </div>
+                  <IPhoneFrame>
+                    <VimeoEmbed
+                      src={finalBuzzerDemoUrl}
+                      title="The Final Buzzer mobile demo"
+                      className="h-full w-full"
+                      iframeClassName="h-full w-full"
+                      cover
+                    />
+                  </IPhoneFrame>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#2e1c10] transition group-hover:text-[#8a4a2b] dark:text-[#f7ede4] dark:group-hover:text-[#c58c5c]">{finalBuzzerProject.title}</h3>
@@ -624,17 +620,15 @@ export default function Home() {
                   isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-100" : "opacity-0"
                 }`}>
                   <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
-                    <div className="relative aspect-[9/20.5] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                      <div className="relative h-full w-full overflow-hidden bg-[#fffdf9] dark:bg-[#111111]">
-                        <VimeoEmbed
-                          src={wildcatDemoUrl}
-                          title="Wildcat Fantasy Football demo"
-                          className="h-full w-full"
-                          iframeClassName="h-full w-full"
-                          cover
-                        />
-                      </div>
-                    </div>
+                    <IPhoneFrame>
+                      <VimeoEmbed
+                        src={wildcatDemoUrl}
+                        title="Wildcat Fantasy Football demo"
+                        className="h-full w-full"
+                        iframeClassName="h-full w-full"
+                        cover
+                      />
+                    </IPhoneFrame>
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6">
                     <div className="flex items-center justify-end text-base font-semibold text-[#8a4a2b] dark:text-[#c58c5c]">
@@ -688,18 +682,15 @@ export default function Home() {
                   isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-100" : "opacity-0"
                 }`}>
                   <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
-                    <div className="relative aspect-[9/19] w-full max-w-[190px] rounded-[2.05rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[6px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                      <div className="pointer-events-none absolute left-1/2 top-[6px] h-[16px] w-[96px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90" />
-                      <div className="relative h-full w-full overflow-hidden rounded-t-[1.75rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.75rem] dark:bg-[#111111]">
-                        <VimeoEmbed
-                          src={meTimeDemoUrl}
-                          title="MeTime demo"
-                          className="h-full w-full"
-                          iframeClassName="h-[calc(100%+24px)] -translate-y-[8px] sm:h-full sm:translate-y-0 rounded-t-[1.75rem] rounded-b-[3.2rem] sm:rounded-[1.75rem]"
-                          cover
-                        />
-                      </div>
-                    </div>
+                    <IPhoneFrame>
+                      <VimeoEmbed
+                        src={meTimeDemoUrl}
+                        title="MeTime demo"
+                        className="h-full w-full"
+                        iframeClassName="h-full w-full"
+                        cover
+                      />
+                    </IPhoneFrame>
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6">
                     <div className="flex items-center justify-end text-base font-semibold text-[#8a4a2b] dark:text-[#c58c5c]">
@@ -752,7 +743,7 @@ export default function Home() {
               </div>
               <h2 className="order-2 flex items-center gap-2 text-2xl font-semibold sm:order-1">
                 {isProfessional ? (
-                  "Design-oriented engineer"
+                  "Design-oriented engineer 👨‍💻"
                 ) : (
                   <>
                     <span>Just a chill guy</span>
@@ -761,7 +752,7 @@ export default function Home() {
                         alt="Chill guy"
                         width={48}
                         height={48}
-                        className="h-12 w-12 rounded-full border border-[#c9a988] bg-[#fff7ef] p-1 object-contain shadow-sm dark:border-[#5a3e2c] dark:bg-[#1f140e]"
+                        className="h-12 w-12 rounded-full border border-[#c9a988] bg-[#fff7ef] p-1 object-contain shadow-sm dark:border-[#c58c5c] dark:bg-white"
                       />
                   </>
                 )}

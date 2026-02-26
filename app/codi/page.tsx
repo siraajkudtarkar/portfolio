@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import IPhoneFrame from "../IPhoneFrame";
 import SiteFooter from "../SiteFooter";
 import VimeoEmbed from "../VimeoEmbed";
 import codiHome from "./Codi Home.png";
@@ -144,25 +145,19 @@ export default function CodiPage() {
 
             <div className="mt-4 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[170px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[220px] dark:border-[#4a3324] dark:bg-[#18110c] -mt-4">
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={codiHome} alt="Codi home screen" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={codiHome} alt="Codi home screen" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[170px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[220px] dark:border-[#4a3324] dark:bg-[#18110c]">
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={codiHistory} alt="Codi history screen" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={codiHistory} alt="Codi history screen" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative aspect-[9/19.5] w-full max-w-[170px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] sm:max-w-[220px] dark:border-[#4a3324] dark:bg-[#18110c]">
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-[#fffdf9] dark:bg-[#111111]">
-                    <Image src={codiSummaryLog} alt="Codi summary log activity screen" className="h-full w-full object-contain" />
-                  </div>
-                </div>
+                <IPhoneFrame className="sm:max-w-[190px]">
+                  <Image src={codiSummaryLog} alt="Codi summary log activity screen" className="h-full w-full object-contain" />
+                </IPhoneFrame>
               </div>
             </div>
           </div>
@@ -214,16 +209,15 @@ export default function CodiPage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <div className="mx-auto flex items-center justify-center">
-              <div className="relative aspect-[9/19] w-full max-w-[300px] rounded-[2.4rem] border border-[#d8c3b0]/70 bg-[#2b2018] p-[8px] shadow-md shadow-[#2e1c10]/20 dark:border-[#4a3324] dark:bg-[#18110c]">
-                <div className="relative h-full w-full overflow-hidden rounded-t-[1.9rem] rounded-b-[3.2rem] bg-[#fffdf9] sm:rounded-[1.9rem] dark:bg-[#111111]">
-                  <VimeoEmbed
-                    src={codiDemoVideoUrl}
-                    title="Codi log demo"
-                    className="h-full w-full"
-                    cover
-                  />
-                </div>
-              </div>
+              <IPhoneFrame className="max-w-[300px]">
+                <VimeoEmbed
+                  src={codiDemoVideoUrl}
+                  title="Codi log demo"
+                  className="h-full w-full"
+                  iframeClassName="h-full w-full"
+                  cover
+                />
+              </IPhoneFrame>
             </div>
 
             {/* <div className="grid gap-3 sm:grid-cols-2">
