@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./ThemeProvider";
 import InteractionFlair from "./InteractionFlair";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 
 const geistSans = Geist({
@@ -52,6 +53,7 @@ export default function RootLayout({
           <InteractionFlair />
         </ThemeProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
