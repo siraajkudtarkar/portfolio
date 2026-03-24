@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import IPhoneFrame from "../IPhoneFrame";
+import ProjectNav from "../ProjectNav";
 import SiteFooter from "../SiteFooter";
 import VimeoEmbed from "../VimeoEmbed";
 
@@ -80,6 +81,9 @@ export default function MeTimePage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f9f4ec] text-[#2e1c10] dark:bg-black dark:text-white">
       <main className="mx-auto max-w-4xl px-5 pb-20 pt-14 sm:px-8 lg:px-12">
+        <div className="sm:hidden">
+          <ProjectNav />
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <a
             className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-4 py-2 text-sm font-semibold text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
@@ -117,19 +121,19 @@ export default function MeTimePage() {
             <p className="text-base leading-7 text-[#5a4030] dark:text-white">
               MeTime turns intention into action. I focused on helping users turn "I should take care of myself" into clear next steps they can do today.
             </p>
-            <div className="mt-4 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-              <div className="flex items-center justify-center">
-                <IPhoneFrame className="sm:max-w-[190px]">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+              <div className="flex items-center justify-center py-2 sm:py-0">
+                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                   <Image src={authImg} alt="MeTime sign up and login wireframe" className="h-full w-full object-contain" placeholder="blur" />
                 </IPhoneFrame>
               </div>
-              <div className="flex items-center justify-center">
-                <IPhoneFrame className="sm:max-w-[190px]">
+              <div className="flex items-center justify-center py-2 sm:py-0">
+                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                   <Image src={homeFeedImg} alt="MeTime home feed wireframe" className="h-full w-full object-contain" placeholder="blur" />
                 </IPhoneFrame>
               </div>
-              <div className="flex items-center justify-center">
-                <IPhoneFrame className="sm:max-w-[190px]">
+              <div className="flex items-center justify-center py-2 sm:py-0">
+                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                   <Image src={addActivityImg} alt="MeTime add activity wireframe" className="h-full w-full object-contain" placeholder="blur" />
                 </IPhoneFrame>
               </div>
@@ -175,7 +179,7 @@ export default function MeTimePage() {
         <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-black">
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
-            <div className="mx-auto flex items-center justify-center">
+            <div className="mx-auto flex items-center justify-center py-3 sm:py-0">
               <IPhoneFrame className="max-w-[300px]">
                 <VimeoEmbed
                   src={meTimeDemoVimeoUrl}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./ThemeProvider";
@@ -33,6 +33,12 @@ const themeInitScript = `(() => {
 export const metadata: Metadata = {
   title: "Siraaj Kudtarkar | Portfolio",
   description: "Product-focused software engineer crafting clean, thoughtful experiences.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

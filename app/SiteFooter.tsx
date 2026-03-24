@@ -63,7 +63,18 @@ export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
       </div>
 
       <div className="mt-6 flex flex-col gap-3 border-t border-[#e6d8c8] pt-4 text-sm dark:border-[#3b2a1f] sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-[#7a5a42] dark:text-[#cbb8aa]">Designed and developed using Tailwind CSS, Motion, and Next.js.</p>
+        <p className="text-xs text-[#7a5a42] dark:text-[#cbb8aa]">
+          Designed and developed using Tailwind CSS, Motion, and Next.js by{" "}
+          <a
+            className="font-semibold hover:text-[#8a4a2b] dark:hover:text-white"
+            href="https://www.linkedin.com/in/siraaj-kudtarkar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Siraaj Kudtarkar
+          </a>
+          .
+        </p>
         <p className="text-xs text-[#7a5a42] dark:text-[#cbb8aa]">© {new Date().getFullYear()} Siraaj Kudtarkar. All rights reserved.</p>
       </div>
     </footer>

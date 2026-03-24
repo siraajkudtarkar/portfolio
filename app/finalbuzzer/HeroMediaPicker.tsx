@@ -79,8 +79,8 @@ export default function HeroMediaPicker({
         </div>
       ) : (
         mobileIphoneFrame ? (
-          <div className="mx-auto flex items-center justify-center pb-4">
-            <IPhoneFrame className={mobileVimeoUrl ? "max-w-[300px]" : "max-w-[190px] sm:max-w-[190px]"}>
+          <div className="mx-auto flex items-center justify-center py-4 sm:py-2">
+            <IPhoneFrame className={mobileVimeoUrl ? "max-w-[300px]" : "max-w-[196px] sm:max-w-[190px]"}>
               {mobileVimeoUrl ? (
                 <VimeoEmbed
                   src={mobileVimeoUrl}

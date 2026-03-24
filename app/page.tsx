@@ -160,6 +160,11 @@ export default function Home() {
   }, []);
 
   const handleProjectNavigation = (event: MouseEvent<HTMLAnchorElement>, href: string, title: string) => {
+    const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    if (isTouchDevice) {
+      return;
+    }
+
     event.preventDefault();
     if (projectOverlay) return;
 
@@ -331,7 +336,7 @@ export default function Home() {
 
         <header
           id="home"
-          className="flex flex-col gap-10 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-8 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]"
+          className="flex flex-col gap-6 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-8 shadow-lg shadow-[#2e1c10]/8 backdrop-blur sm:gap-10 dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]"
         >
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-3 py-1 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
@@ -517,8 +522,8 @@ export default function Home() {
           <div className="space-y-8">
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
-                  <IPhoneFrame>
+                <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
+                  <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                     <VimeoEmbed
                       src={codiDemoUrl}
                       title="Codi demo"
@@ -550,8 +555,8 @@ export default function Home() {
 
             <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div className="mx-auto flex h-full min-h-[460px] max-w-[760px] items-center justify-center p-4 pb-16">
-                  <IPhoneFrame>
+                <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
+                  <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                     <VimeoEmbed
                       src={finalBuzzerDemoUrl}
                       title="The Final Buzzer mobile demo"
@@ -583,14 +588,14 @@ export default function Home() {
 
             <div className="grid gap-8 lg:grid-cols-2">
               <article
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]"
+                className="group relative cursor-pointer overflow-visible rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:overflow-hidden dark:border-[#3b2a1f] dark:bg-[#24160d]"
                 onClick={() => {
                   if (!isTouchPreviewDevice) return;
                   setTappedProjectCard((current) => (current === "wildcat" ? null : "wildcat"));
                 }}
               >
                 <div
-                  className={`relative z-10 flex min-h-[480px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 ${
+                  className={`relative z-10 flex min-h-[560px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] ${
                     isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-0" : "opacity-100"
                   }`}
                 >
@@ -616,11 +621,11 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-6 transition duration-300 group-hover:opacity-100 ${
+                <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-4 transition duration-300 group-hover:opacity-100 sm:p-6 ${
                   isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-100" : "opacity-0"
                 }`}>
-                  <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
-                    <IPhoneFrame>
+                  <div className="flex h-full w-full items-center justify-center pb-24 pt-6 sm:pb-16 sm:pt-0">
+                    <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                       <VimeoEmbed
                         src={wildcatDemoUrl}
                         title="Wildcat Fantasy Football demo"
@@ -645,14 +650,14 @@ export default function Home() {
               </article>
 
               <article
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]"
+                className="group relative cursor-pointer overflow-visible rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:overflow-hidden dark:border-[#3b2a1f] dark:bg-[#24160d]"
                 onClick={() => {
                   if (!isTouchPreviewDevice) return;
                   setTappedProjectCard((current) => (current === "metime" ? null : "metime"));
                 }}
               >
                 <div
-                  className={`relative z-10 flex min-h-[480px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 ${
+                  className={`relative z-10 flex min-h-[560px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] ${
                     isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-0" : "opacity-100"
                   }`}
                 >
@@ -678,11 +683,11 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-6 transition duration-300 group-hover:opacity-100 ${
+                <div className={`pointer-events-none absolute inset-0 flex items-center justify-center p-4 transition duration-300 group-hover:opacity-100 sm:p-6 ${
                   isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-100" : "opacity-0"
                 }`}>
-                  <div className="flex h-full w-full items-center justify-center pb-24 sm:pb-16">
-                    <IPhoneFrame>
+                  <div className="flex h-full w-full items-center justify-center pb-24 pt-6 sm:pb-16 sm:pt-0">
+                    <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
                       <VimeoEmbed
                         src={meTimeDemoUrl}
                         title="MeTime demo"
@@ -957,7 +962,7 @@ export default function Home() {
               role="dialog"
               aria-modal="true"
               aria-label={`${projectOverlay.title} preview`}
-              className="relative flex h-[min(860px,90vh)] w-[min(1100px,94vw)] flex-col overflow-hidden rounded-[1.75rem] border border-[#e6d8c8] bg-[#fffbf7] shadow-2xl shadow-[#2e1c10]/35 dark:border-[#3b2a1f] dark:bg-[#1a120c]"
+              className="relative flex h-[calc(100dvh-2rem)] w-[min(1100px,94vw)] flex-col overflow-hidden rounded-[1.75rem] border border-[#e6d8c8] bg-[#fffbf7] shadow-2xl shadow-[#2e1c10]/35 sm:h-[min(860px,90vh)] dark:border-[#3b2a1f] dark:bg-[#1a120c]"
               onClick={(event) => event.stopPropagation()}
               initial={{ opacity: 0 }}
               animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}

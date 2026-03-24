@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroMediaPicker from "./HeroMediaPicker";
+import ProjectNav from "../ProjectNav";
 import SiteFooter from "../SiteFooter";
 
 // Replace these with your real assets (same palette as MeTime).
@@ -83,6 +84,9 @@ export default function FinalBuzzerPage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f9f4ec] text-[#2e1c10] dark:bg-black dark:text-white">
       <main className="mx-auto max-w-4xl px-5 pb-20 pt-14 sm:px-8 lg:px-12">
+        <div className="sm:hidden">
+          <ProjectNav />
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-3">
             {/* View Live Site button (same styling as repo button) */}

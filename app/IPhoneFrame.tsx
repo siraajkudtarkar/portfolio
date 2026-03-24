@@ -15,7 +15,7 @@ export default function IPhoneFrame({
 }: IPhoneFrameProps) {
   return (
     <div
-      className={`relative overflow-hidden aspect-[9/19] w-full max-w-[190px] rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] dark:border-[#3b2a1f] dark:bg-[#111111] md:rounded-[2.4rem] md:border-[#d8c3b0]/70 md:bg-[#2b2018] md:p-[8px] md:shadow-md md:shadow-[#2e1c10]/20 md:dark:border-[#4a3324] md:dark:bg-[#18110c] ${className ?? ""}`}
+      className={`relative aspect-[9/19] w-full max-w-[168px] shrink-0 overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] sm:max-w-[190px] dark:border-[#3b2a1f] dark:bg-[#111111] md:rounded-[2.4rem] md:border-[#d8c3b0]/70 md:bg-[#2b2018] md:p-[8px] md:shadow-md md:shadow-[#2e1c10]/20 md:dark:border-[#4a3324] md:dark:bg-[#18110c] ${className ?? ""}`}
     >
       {showNotch && (
         <div className="pointer-events-none absolute left-1/2 top-[7px] hidden h-[18px] w-[108px] -translate-x-1/2 rounded-b-2xl bg-[#1f1611]/95 dark:bg-black/90 md:block" />
