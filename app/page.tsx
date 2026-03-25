@@ -408,7 +408,7 @@ export default function Home() {
                 <div className="relative h-full w-full overflow-hidden rounded-2xl">
                   <Image
                     src={isProfessional ? "/headshot_edited.png" : "/personal.png"}
-                    alt={isProfessional ? "Portrait of Siraaj Kudtarkar" : "Personal photo of Siraaj Kudtarkar"}
+                    alt={isProfessional ? "Professional headshot of Siraaj Kudtarkar" : "Personal portrait photo of Siraaj Kudtarkar"}
                     fill
                     sizes="(max-width: 640px) 320px, 352px"
                     className={`object-cover ${isProfessional ? "object-top scale-110" : "object-[center_22%] scale-125"}`}
