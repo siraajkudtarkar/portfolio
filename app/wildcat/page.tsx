@@ -20,6 +20,9 @@ const overview = [
   "Architecture: Delivered a React Native frontend with secure auth and MongoDB backed APIs.",
 ];
 
+const role = "Full-Stack Mobile Developer";
+const timeline = "October - December 2025 (SI679/SI669 Course Project)";
+
 const demoLinks = [
   { label: "View Repository", href: "https://github.com/siraajkudtarkar/wildcat" },
   { label: "View Demo Walkthrough", href: "https://drive.google.com/file/d/1QKyx9x4PvjuNYRLGT25ObCLNkpieI5Gk/view?usp=sharing" },
@@ -177,6 +180,16 @@ export default function WildcatPage() {
 
         <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-8 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
           <h2 className="text-lg font-semibold">Overview</h2>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Role</p>
+              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{role}</p>
+            </div>
+            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Timeline</p>
+              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{timeline}</p>
+            </div>
+          </div>
           <div className="space-y-3 text-sm leading-6 text-[#5a4030] dark:text-white">
             {overview.map((line) => (
               <p key={line}>{renderImpactLine(line)}</p>

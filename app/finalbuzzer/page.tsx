@@ -2,13 +2,6 @@ import Link from "next/link";
 import HeroMediaPicker from "./HeroMediaPicker";
 import ProjectNav from "../ProjectNav";
 import SiteFooter from "../SiteFooter";
-
-// Replace these with your real assets (same palette as MeTime).
-// import dashboardImg from "./FinalBuzzer Dashboard.png";
-// import tasksImg from "./FinalBuzzer Tasks.png";
-// import mobileImg from "./FinalBuzzer Mobile.png";
-// import demoGif from "./FinalBuzzer Demo.gif";
-
 import finalBuzzerDashboard from "./The Final Buzzer.jpeg";
 import finalBuzzerMobile from "./The Final Buzzer Mobile.png";
 
@@ -23,6 +16,9 @@ const overview = [
   "Execution: Shipped timer and workload workflows that convert intention into measurable execution.",
   "Quality: Improved accessibility and responsive UX through targeted audits and implementation fixes.",
 ];
+
+const role = "Frontend React Developer";
+const timeline = "February - April 2025 (SI579/SI539 Course Project)";
 
 const demoLinks = [
   { label: "Live Site", href: "https://siraajkudtarkar.github.io/the-final-buzzer/" },
@@ -166,6 +162,16 @@ export default function FinalBuzzerPage() {
 
         <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-8 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
           <h2 className="text-lg font-semibold">Overview</h2>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Role</p>
+              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{role}</p>
+            </div>
+            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Timeline</p>
+              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{timeline}</p>
+            </div>
+          </div>
           <div className="space-y-3 text-sm leading-6 text-[#5a4030] dark:text-white">
             {overview.map((line) => (
               <p key={line}>{renderImpactLine(line)}</p>

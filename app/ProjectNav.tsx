@@ -54,15 +54,12 @@ export default function ProjectNav() {
           })}
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-4 text-sm font-semibold">
+      <div className="grid grid-cols-4 gap-4 text-sm font-semibold">
         <a className={navItemClass} href="/#top">
           Home
         </a>
         <a className={navItemClass} href="/#work">
           Work
-        </a>
-        <a className={navItemClass} href="/#about">
-          About
         </a>
         <a className={navItemClass} href="/#contact">
           Contact

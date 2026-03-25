@@ -87,7 +87,7 @@ export default function Home() {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    const ids = ["home", "work", "about", "contact"];
+    const ids = ["home", "work", "contact"];
 
     const updateActiveSection = () => {
       const offset = window.innerWidth < 640 ? 150 : 180;
@@ -310,15 +310,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-5 gap-4 text-sm font-semibold">
+          <div className="grid grid-cols-4 gap-4 text-sm font-semibold">
             <a className={navLinkClass("home")} href="#top">
               Home
             </a>
             <a className={navLinkClass("work")} href="#work">
               Work
-            </a>
-            <a className={navLinkClass("about")} href="#about">
-              About
             </a>
             <a className={navLinkClass("contact")} href="#contact">
               Contact
@@ -338,32 +335,71 @@ export default function Home() {
           id="home"
           className="flex flex-col gap-6 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-8 shadow-lg shadow-[#2e1c10]/8 backdrop-blur sm:gap-10 dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]"
         >
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-3 py-1 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10Z" />
-                <circle cx="12" cy="11" r="2.2" />
-              </svg>
-              Ann Arbor, MI <span aria-hidden>•</span> Willing to Relocate
-            </span>
-
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
-              <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center" aria-hidden>
-                <motion.span
-                  className="absolute inline-flex h-full w-full rounded-full border border-emerald-400/70"
-                  initial={{ opacity: 0.22, scale: 0.88 }}
-                  animate={{ opacity: [0.22, 0.68, 0.22], scale: [0.88, 1.2, 0.88] }}
-                  transition={{ duration: 2.2, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-                />
-                <motion.span
-                  className="relative h-2 w-2 rounded-full bg-emerald-500"
-                  initial={{ opacity: 0.8 }}
-                  animate={{ opacity: [0.8, 1, 0.8] }}
-                  transition={{ duration: 1.8, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-                />
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-2 text-xs font-semibold text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
+                <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center" aria-hidden>
+                  <motion.span
+                    className="absolute inline-flex h-full w-full rounded-full border border-emerald-400/70"
+                    initial={{ opacity: 0.22, scale: 0.88 }}
+                    animate={{ opacity: [0.22, 0.68, 0.22], scale: [0.88, 1.2, 0.88] }}
+                    transition={{ duration: 2.2, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+                  />
+                  <motion.span
+                    className="relative h-2 w-2 rounded-full bg-emerald-500"
+                    initial={{ opacity: 0.8 }}
+                    animate={{ opacity: [0.8, 1, 0.8] }}
+                    transition={{ duration: 1.8, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+                  />
+                </span>
+                Open to Work
               </span>
-              Open to Work
-            </span>
+
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-2.5 py-2 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10Z" />
+                  <circle cx="12" cy="12" r="2.2" />
+                </svg>
+                <span>Ann Arbor, MI</span>
+              </span>
+
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-2.5 py-2 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m22 2-7 20-4-9-9-4Z" />
+                  <path d="M22 2 11 13" />
+                </svg>
+                <span>Willing to Relocate</span>
+              </span>
+            </div>
+
+            <div className="grid w-full grid-cols-2 overflow-hidden rounded-full border border-[#e6d8c8] bg-[#fffbf7] text-xs font-semibold text-[#5a4030] shadow-sm sm:w-auto sm:shrink-0 dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4]">
+              <button
+                type="button"
+                aria-pressed={isProfessional}
+                className={`flex w-full items-center justify-center gap-2 whitespace-nowrap px-4 py-2 transition ${
+                  isProfessional
+                    ? "bg-[#9d5e34] text-white shadow-inner shadow-[#2e1c10]/20 dark:bg-[#9d5e34] dark:text-white"
+                    : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
+                }`}
+                onClick={() => setIsProfessional(true)}
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M9 5c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v1h3.5A1.5 1.5 0 0 1 20 7.5v1.88l-8 3.2-8-3.2V7.5A1.5 1.5 0 0 1 4.5 6H8V5Zm2 1h2V6h-2v.01ZM4 10.46l7.65 3.06a1.5 1.5 0 0 0 1.1 0L20 10.46V16.5A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-6.04Z"/></svg>
+                <span>Professional</span>
+              </button>
+              <button
+                type="button"
+                aria-pressed={!isProfessional}
+                className={`flex w-full items-center justify-center gap-2 whitespace-nowrap px-4 py-2 transition ${
+                  !isProfessional
+                    ? "bg-[#2e1c10] text-[#f7ede4] shadow-inner shadow-[#000]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10]"
+                    : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
+                }`}
+                onClick={() => setIsProfessional(false)}
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M12 12.75a3.75 3.75 0 1 0-3.75-3.75A3.75 3.75 0 0 0 12 12.75Zm0 2.25c-3 0-5.5 1.68-5.5 3.75 0 .55.45 1 1 1h9c.55 0 1-.45 1-1 0-2.07-2.5-3.75-5.5-3.75Z"/></svg>
+                <span>Personal</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
@@ -371,42 +407,83 @@ export default function Home() {
               <div className="h-80 w-80 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9] p-2 shadow-inner shadow-[#2e1c10]/6 sm:h-[22rem] sm:w-[22rem] dark:border-[#3b2a1f] dark:bg-[#24160d]">
                 <div className="relative h-full w-full overflow-hidden rounded-2xl">
                   <Image
-                    src="/headshot_edited.png"
-                    alt="Portrait of Siraaj Kudtarkar"
+                    src={isProfessional ? "/headshot_edited.png" : "/personal.png"}
+                    alt={isProfessional ? "Portrait of Siraaj Kudtarkar" : "Personal photo of Siraaj Kudtarkar"}
                     fill
                     sizes="(max-width: 640px) 320px, 352px"
-                    className="object-cover object-top scale-110"
+                    className={`object-cover ${isProfessional ? "object-top scale-110" : "object-[center_22%] scale-125"}`}
                     priority
                   />
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
+            <div id="about" className="scroll-mt-24 space-y-6">
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm uppercase tracking-[0.24em] text-[#7a5a42] dark:text-[#d7c4b6]">Hi there! 👋🏾</p>
                 </div>
                 <h1 className="text-3xl font-semibold sm:text-4xl">Siraaj Kudtarkar</h1>
+                <h3 className="flex items-center gap-2 text-lg font-medium text-[#5a4030] sm:text-xl dark:text-[#e4d4c6]">
+                  {isProfessional ? (
+                    "Design-oriented engineer 👨‍💻"
+                  ) : (
+                    <>
+                      <span>Just a chill guy</span>
+                      <Image
+                        src="/chillguy_nobg.png"
+                        alt="Chill guy"
+                        width={48}
+                        height={48}
+                        className="h-12 w-12 rounded-full border border-[#c9a988] bg-[#fff7ef] p-1 object-contain shadow-sm dark:border-[#c58c5c] dark:bg-white"
+                      />
+                    </>
+                  )}
+                </h3>
                 <p className="text-lg text-[#5a4030] dark:text-[#e4d4c6]">
-                  I’m a UX Engineer focused on educational and health software technologies, and I am open to roles in UX, product, and software engineering.
+                  {isProfessional
+                    ? "I build research-driven, accessible digital products that bridge design and engineering."
+                    : "I love to read, weight lift, cook, and play tennis."}
                 </p>
                 <div className="pt-1">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">Education</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">{isProfessional ? "What I do for work" : "What I do for fun"}</p>
                   <div className="mt-2 space-y-2.5">
-                    <div className="flex items-start gap-2">
-                      <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
-                      <p>M.S. in Information Science at University of Michigan, specializing in User-Centric Agile Development (Expected May 2026)</p>
-                    </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                    <p>B.S. in Computer Science at UC Riverside (Graduated Sept. 2023)</p>
-                  </div>
+                    {isProfessional ? (
+                      <>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
+                          <p>Software Engineering & Front-End Development (React, React Native, JavaScript)</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
+                          <p>Web & Mobile Full-Stack Application Development</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
+                          <p>UI/UX Design & Research (usability testing, prototyping, wireframing)</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
+                          <p>I am a huge foodie and have an endless list of restaurants in my &quot;Want to Go&quot; on Google Maps</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
+                          <p>All I need are my headphones and freshly made masala chai</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
+                          <p>At any point, I am likely playing sports videogames or watching live sports</p>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
               <div className="mx-auto inline-grid w-fit grid-cols-2 gap-2 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
-                <a className="col-span-2 inline-flex w-full items-center justify-center rounded-full bg-[#9d5e34] px-5 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]" href="#work">
-                  View Work
+                <a className="col-span-2 inline-flex w-full items-center justify-center rounded-full bg-[#9d5e34] px-5 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]" href="#contact">
+                  Send Message
                 </a>
                 <a className="inline-flex items-center justify-center gap-2 rounded-full border border-[#e6d8c8] px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]" href="https://github.com/siraajkudtarkar" target="_blank" rel="noopener noreferrer">
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.45-2.69 5.43-5.25 5.71.41.35.77 1.05.77 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
@@ -711,118 +788,6 @@ export default function Home() {
                 </div>
               </article>
             </div>
-          </div>
-        </section>
-
-        <section id="about" className="scroll-mt-24 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-8 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]">
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#7a5a42] dark:text-[#d7c4b6]">About</p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="order-1 grid w-full grid-cols-2 overflow-hidden rounded-full border border-[#e6d8c8] bg-[#fffbf7] text-xs font-semibold text-[#5a4030] shadow-sm dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4] sm:order-2 sm:inline-flex sm:w-auto">
-                <button
-                  type="button"
-                  aria-pressed={isProfessional}
-                  className={`flex w-full items-center justify-center gap-2 whitespace-nowrap px-4 py-2 transition ${
-                    isProfessional
-                      ? "bg-[#9d5e34] text-white shadow-inner shadow-[#2e1c10]/20 dark:bg-[#9d5e34] dark:text-white"
-                      : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
-                  }`}
-                  onClick={() => setIsProfessional(true)}
-                >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M9 5c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v1h3.5A1.5 1.5 0 0 1 20 7.5v1.88l-8 3.2-8-3.2V7.5A1.5 1.5 0 0 1 4.5 6H8V5Zm2 1h2V6h-2v.01ZM4 10.46l7.65 3.06a1.5 1.5 0 0 0 1.1 0L20 10.46V16.5A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-6.04Z"/></svg>
-                  <span>Professional</span>
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={!isProfessional}
-                  className={`flex w-full items-center justify-center gap-2 whitespace-nowrap px-4 py-2 transition ${
-                    !isProfessional
-                      ? "bg-[#2e1c10] text-[#f7ede4] shadow-inner shadow-[#000]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10]"
-                      : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
-                  }`}
-                  onClick={() => setIsProfessional(false)}
-                >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M12 12.75a3.75 3.75 0 1 0-3.75-3.75A3.75 3.75 0 0 0 12 12.75Zm0 2.25c-3 0-5.5 1.68-5.5 3.75 0 .55.45 1 1 1h9c.55 0 1-.45 1-1 0-2.07-2.5-3.75-5.5-3.75Z"/></svg>
-                  <span>Personal</span>
-                </button>
-              </div>
-              <h2 className="order-2 flex items-center gap-2 text-2xl font-semibold sm:order-1">
-                {isProfessional ? (
-                  "Design-oriented engineer 👨‍💻"
-                ) : (
-                  <>
-                    <span>Just a chill guy</span>
-                      <Image
-                        src="/chillguy_nobg.png"
-                        alt="Chill guy"
-                        width={48}
-                        height={48}
-                        className="h-12 w-12 rounded-full border border-[#c9a988] bg-[#fff7ef] p-1 object-contain shadow-sm dark:border-[#c58c5c] dark:bg-white"
-                      />
-                  </>
-                )}
-              </h2>
-            </div>
-          </div>
-          <div className="mt-6 grid gap-8 lg:grid-cols-2">
-            <div className="space-y-3">
-              {/* <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">Who I am:</p> */}
-              <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">
-                {isProfessional
-                  ? "I enjoy building research-driven, accessible digital products that bridge design and engineering."
-                  : "In my spare time, I love reading, weight lifting, and playing tennis. I also express my creative side through cooking and music. If you're reading this, feel free to reach out and send me a message!"}
-              </p>
-            </div>
-            <div className="space-y-3 text-sm text-[#5a4030] dark:text-[#e4d4c6]">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#d7c4b6]">{isProfessional ? "What I do for work" : "What I do for fun"}</p>
-              {isProfessional ? (
-                <>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
-                    <p>UX Engineering & Front-End Development (React, React Native, JavaScript)</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                    <p>Web & Mobile Application Development</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
-                    <p>UI/UX Design & Research (usability testing, prototyping, wireframing)</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#8a4a2b]" aria-hidden />
-                    <p>I am a huge foodie and have an endless list of restaurants in my &quot;Want to Go&quot; on Google Maps</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                    <p>All I need are my headphones and freshly made masala chai</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
-                    <p>At any point, I am likely playing sports videogames or watching live sports</p>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              className="inline-flex items-center gap-2 rounded-full bg-[#9d5e34] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#2e1c10]/15 transition hover:-translate-y-0.5 hover:bg-[#7f4b28] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Resume
-            </a>
-            <a
-              className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-5 py-3 text-sm font-semibold text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
-              href="#contact"
-            >
-              Send Message
-            </a>
           </div>
         </section>
 
