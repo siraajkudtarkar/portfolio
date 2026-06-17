@@ -5,8 +5,12 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type FormEvent, type MouseEvent } from "react";
 import SiteFooter from "./SiteFooter";
 import IPhoneFrame from "./IPhoneFrame";
+import AndroidTabletFrame from "./AndroidTabletFrame";
 import { useTheme } from "./ThemeProvider";
 import VimeoEmbed from "./VimeoEmbed";
+import muskegonMobile from "./polishfestival/Muskegon Mobile Screenshot.jpeg";
+import muskegonTablet from "./polishfestival/Muskegon Tablet Screenshot.png";
+import muskegonTabletDemo from "./polishfestival/Muskegon Tablet Demo.gif";
 
 const codiDemoUrl = "https://player.vimeo.com/video/1167947118?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 const finalBuzzerDemoUrl = "https://player.vimeo.com/video/1167948538?autoplay=1&muted=1&loop=1&autopause=0&background=1";
@@ -25,6 +29,13 @@ const projects = [
     summary: "Designed a collaborative mobile application for children with diabetes and parents supported by a University of Michigan-backed research study.",
     stack: ["React Native", "TypeScript", "Firebase", "OpenAI", "Expo", "Node", "Frontend Development", "Full-Stack Development", "UX Design & Research", "Cross Collaboration"],
     link: "/codi",
+  },
+  {
+    title: "Muskegon Polish Festival Mobile & Tablet Experience",
+    productType: "Education",
+    summary: "Created a responsive mobile and tablet experience that highlights Polish heritage in a modern, interactive way — won the Final Project Award for User-Centered Agile Development at the UMSI Exposition.",
+    stack: ["React Native", "TypeScript", "Frontend Development", "Expo", "Node", "Cross Collaboration"],
+    link: "/polishfestival",
   },
   {
     title: "The Final Buzzer",
@@ -230,9 +241,10 @@ export default function Home() {
   };
 
   const codiProject = projects[0];
-  const finalBuzzerProject = projects[1];
-  const wildcatProject = projects[2];
-  const meTimeProject = projects[3];
+  const polishFestivalProject = projects[1];
+  const finalBuzzerProject = projects[2];
+  const wildcatProject = projects[3];
+  const meTimeProject = projects[4];
 
   return (
     <div id="top" className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f9f4ec] text-[#2e1c10] dark:bg-[#110b07] dark:text-[#f7ede4]">
@@ -360,7 +372,7 @@ export default function Home() {
                   <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10Z" />
                   <circle cx="12" cy="12" r="2.2" />
                 </svg>
-                <span>Ann Arbor, MI</span>
+                <span>Riverside, CA</span>
               </span>
 
               <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-2.5 py-2 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
@@ -588,7 +600,7 @@ export default function Home() {
           </div>
         </header>
 
-        <section id="work" className="scroll-mt-24 space-y-8 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-10 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]">
+        <section id="work" className="scroll-mt-24 space-y-8 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-5 shadow-lg shadow-[#2e1c10]/8 backdrop-blur sm:p-10 dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-base uppercase tracking-[0.24em] text-[#7a5a42] dark:text-[#d7c4b6]">Work</p>
@@ -597,7 +609,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-8">
-            <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
+            <article className="group rounded-none border-0 bg-[#fffbf7]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:rounded-2xl sm:bg-[#fffdf9] sm:p-8 sm:border sm:border-[#e6d8c8] sm:shadow-sm dark:bg-[#1a120c]/85 dark:sm:rounded-2xl dark:sm:bg-[#24160d] dark:sm:border-[#3b2a1f]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
                   <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
@@ -616,7 +628,7 @@ export default function Home() {
                   <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{codiProject.summary}</p>
                   <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                     {codiProject.stack.map((tech) => (
-                      <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
+                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -630,7 +642,56 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="group rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 dark:border-[#3b2a1f] dark:bg-[#24160d]">
+            <article className="group rounded-none border-0 bg-[#fffbf7]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:rounded-2xl sm:bg-[#fffdf9] sm:p-8 sm:border sm:border-[#e6d8c8] sm:shadow-sm dark:bg-[#1a120c]/85 dark:sm:rounded-2xl dark:sm:bg-[#24160d] dark:sm:border-[#3b2a1f]">
+              <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                <div className="mx-auto flex items-center justify-center sm:hidden">
+                  <div className="w-[min(72vw,380px)] rounded-2xl bg-[#8a4a2b] shadow-md shadow-[#2e1c10]/20 sm:p-48 sm:pb-24 sm:pt-36">
+                    <div className="overflow-hidden rounded-2xl bg-[#fffdf9] p-1.5">
+                      <Image
+                        src={muskegonTabletDemo}
+                        alt="Muskegon tablet demo"
+                        className="h-auto w-full object-contain"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mx-auto hidden min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:flex sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
+                  <div className="flex items-center justify-center">
+                    <AndroidTabletFrame className="max-w-[420px]" screenClassName="bg-[#fffdf9]">
+                      <div className="h-full w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
+                        <Image
+                          src={muskegonTabletDemo}
+                          alt="Muskegon tablet demo"
+                          className="h-full w-full object-cover scale-[1] object-top"
+                          unoptimized
+                        />
+                      </div>
+                    </AndroidTabletFrame>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-[#2e1c10] transition group-hover:text-[#8a4a2b] dark:text-[#f7ede4] dark:group-hover:text-[#c58c5c]">{polishFestivalProject.title}</h3>
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#7a5a42] dark:text-[#cbb8aa]">{polishFestivalProject.productType}</p>
+                  <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{polishFestivalProject.summary}</p>
+                  <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
+                    {polishFestivalProject.stack.map((tech) => (
+                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center justify-end text-base font-semibold text-[#8a4a2b] dark:text-[#c58c5c]">
+                    <a className="inline-flex items-center gap-2 rounded-full px-3 py-2 transition group-hover:translate-x-1" href={polishFestivalProject.link} onClick={(event) => handleProjectNavigation(event, polishFestivalProject.link, polishFestivalProject.title)}>
+                      Read more
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className="group rounded-none border-0 bg-[#fffbf7]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:rounded-2xl sm:bg-[#fffdf9] sm:p-8 sm:border sm:border-[#e6d8c8] sm:shadow-sm dark:bg-[#1a120c]/85 dark:sm:rounded-2xl dark:sm:bg-[#24160d] dark:sm:border-[#3b2a1f]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
                   <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
@@ -649,7 +710,7 @@ export default function Home() {
                   <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{finalBuzzerProject.summary}</p>
                   <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                     {finalBuzzerProject.stack.map((tech) => (
-                      <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
+                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -665,14 +726,14 @@ export default function Home() {
 
             <div className="grid gap-8 lg:grid-cols-2">
               <article
-                className="group relative cursor-pointer overflow-visible rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:overflow-hidden dark:border-[#3b2a1f] dark:bg-[#24160d]"
+                className="group relative cursor-pointer overflow-visible rounded-none border-0 bg-[#fffbf7]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:rounded-2xl sm:bg-[#fffdf9] sm:p-8 sm:overflow-hidden sm:border sm:border-[#e6d8c8] sm:shadow-sm dark:bg-[#1a120c]/85 dark:sm:rounded-2xl dark:sm:bg-[#24160d] dark:sm:border-[#3b2a1f]"
                 onClick={() => {
                   if (!isTouchPreviewDevice) return;
                   setTappedProjectCard((current) => (current === "wildcat" ? null : "wildcat"));
                 }}
               >
                 <div
-                  className={`relative z-10 flex min-h-[560px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] ${
+                  className={`relative z-10 flex min-h-[560px] flex-col px-2 pt-4 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] sm:p-8 ${
                     isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-0" : "opacity-100"
                   }`}
                 >
@@ -682,7 +743,7 @@ export default function Home() {
                     <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{wildcatProject.summary}</p>
                     <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                       {wildcatProject.stack.map((tech) => (
-                        <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
+                          <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
@@ -727,14 +788,14 @@ export default function Home() {
               </article>
 
               <article
-                className="group relative cursor-pointer overflow-visible rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:overflow-hidden dark:border-[#3b2a1f] dark:bg-[#24160d]"
+                className="group relative cursor-pointer overflow-visible rounded-none border-0 bg-[#fffbf7]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#2e1c10]/15 sm:rounded-2xl sm:bg-[#fffdf9] sm:p-8 sm:overflow-hidden sm:border sm:border-[#e6d8c8] sm:shadow-sm dark:bg-[#1a120c]/85 dark:sm:rounded-2xl dark:sm:bg-[#24160d] dark:sm:border-[#3b2a1f]"
                 onClick={() => {
                   if (!isTouchPreviewDevice) return;
                   setTappedProjectCard((current) => (current === "metime" ? null : "metime"));
                 }}
               >
                 <div
-                  className={`relative z-10 flex min-h-[560px] flex-col p-8 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] ${
+                  className={`relative z-10 flex min-h-[560px] flex-col px-2 pt-4 pb-24 transition duration-300 group-hover:opacity-0 sm:min-h-[480px] sm:p-8 ${
                     isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-0" : "opacity-100"
                   }`}
                 >
@@ -744,7 +805,7 @@ export default function Home() {
                     <p className="text-base leading-7 text-[#5a4030] dark:text-[#e4d4c6]">{meTimeProject.summary}</p>
                     <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#5a4030] dark:text-[#e4d4c6]">
                       {meTimeProject.stack.map((tech) => (
-                        <span key={tech} className={`rounded-full px-3.5 py-1.5 ${getProjectSkillPillClass(tech)}`}>
+                          <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
