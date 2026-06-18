@@ -370,7 +370,7 @@ export default function Home() {
                   <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10Z" />
                   <circle cx="12" cy="12" r="2.2" />
                 </svg>
-                <span>Riverside, CA</span>
+                <span>New York City, NY</span>
               </span>
 
               <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#f6ebdf] px-2.5 py-2 text-xs font-semibold text-[#5a4030] dark:border-[#3b2a1f] dark:bg-[#2a1b12] dark:text-[#e4d4c6]">
@@ -378,7 +378,7 @@ export default function Home() {
                   <path d="m22 2-7 20-4-9-9-4Z" />
                   <path d="M22 2 11 13" />
                 </svg>
-                <span>Willing to Relocate</span>
+                <span>Open to: Bay Area, Seattle, Chicago</span>
               </span>
             </div>
 
