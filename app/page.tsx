@@ -658,7 +658,7 @@ export default function Home() {
 
                 <div className="mx-auto hidden min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:flex sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
                   <div className="flex items-center justify-center">
-                    <AndroidTabletFrame className="max-w-[420px]" screenClassName="bg-[#fffdf9]">
+                    <AndroidTabletFrame className="!w-[340px] !max-w-[340px]" screenClassName="bg-[#fffdf9]">
                       <VimeoEmbed
                         src={muskegonDemoUrl}
                         title="Muskegon tablet demo"

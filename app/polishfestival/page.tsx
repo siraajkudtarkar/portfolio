@@ -281,7 +281,7 @@ export default function MuskegonPolishFestivalPage() {
               </div>
 
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <AndroidTabletFrame className="max-w-[950px]" screenClassName="bg-[#fffdf9]">
+                <AndroidTabletFrame className="!w-full sm:!w-[460px] sm:!max-w-[460px]" screenClassName="bg-[#fffdf9]">
                   <div className="h-full w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
                     <VimeoEmbed
                       src={muskegonTabletDemoVimeoUrl}
