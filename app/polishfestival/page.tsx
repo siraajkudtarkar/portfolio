@@ -172,7 +172,17 @@ export default function MuskegonPolishFestivalPage() {
                 </IPhoneFrame>
               </div>
 
-                <div className="mt-4 flex items-center justify-center py-2">
+                <div className="sm:hidden mt-4 flex items-center justify-center py-2">
+                  <div className="w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
+                    <Image
+                      src={muskegonTablet}
+                      alt="Muskegon tablet screenshot"
+                      className="h-auto w-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+
+                <div className="hidden sm:flex mt-4 items-center justify-center py-2">
                   <AndroidTabletFrame className="max-w-[950px]" screenClassName="bg-[#fffdf9]">
                     <div className="h-full w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
                       <Image
@@ -267,7 +277,32 @@ export default function MuskegonPolishFestivalPage() {
         <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-black">
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
+            <div className="sm:hidden space-y-4">
+              <div className="flex items-center justify-center py-2">
+                <div className="w-[min(100vw,1000px)] aspect-[5/3] rounded-2xl overflow-hidden">
+                  <VimeoEmbed
+                    src={muskegonMobileDemoVimeoUrl}
+                    title="Muskegon mobile demo"
+                    className="h-full w-full"
+                    iframeClassName="h-full w-full"
+                    cover
+                  />
+                </div>
+              </div>
+              <div className="flex items-center justify-center py-2">
+                <div className="w-[min(72vw,380px)] aspect-[5/3] rounded-2xl overflow-hidden">
+                  <VimeoEmbed
+                    src={muskegonTabletDemoVimeoUrl}
+                    title="Muskegon tablet demo"
+                    className="h-full w-full"
+                    iframeClassName="h-full w-full"
+                    cover
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className="hidden sm:grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
               <div className="flex items-center justify-center py-2 sm:py-0">
                 <IPhoneFrame className="max-w-[220px]" screenClassName="bg-[#fffdf9]">
                   <VimeoEmbed
