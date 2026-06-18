@@ -2,11 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import IPhoneFrame from "../IPhoneFrame";
 import AndroidTabletFrame from "../AndroidTabletFrame";
+import VimeoEmbed from "../VimeoEmbed";
 import ProjectNav from "../ProjectNav";
 import muskegonMobile from "../polishfestival/Muskegon Mobile Screenshot.jpeg"
 import muskegonTablet from "../polishfestival/Muskegon Tablet Screenshot.png"
-import muskegonMobileDemo from "../polishfestival/Muskegon Mobile Demo.gif"
-import muskegonTabletDemo from "../polishfestival/Muskegon Tablet Demo.gif"
 import muskegonFlow from "../polishfestival/Muskegon Experience Flow.png"
 import expositionWinner from "../polishfestival/ExpositionWinner.png"
 
@@ -35,6 +34,9 @@ const demoLinks = [
   { label: "Project Pitch Video", href: "https://drive.google.com/file/d/17BJfsLLog4mSiyNUqcPTkwzBJLiIofts/view?usp=sharing" },
   { label: "Project Slide Deck", href: "https://docs.google.com/presentation/d/18ARWZVaNEGORFiKSCrK6fc97QlP6dzzzB1V4RKuBdZk/edit?usp=sharing" },
 ];
+
+const muskegonMobileDemoVimeoUrl = "https://player.vimeo.com/video/1202318773?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
+const muskegonTabletDemoVimeoUrl = "https://player.vimeo.com/video/1202318788?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
 
 const highlightGroups = [
   {
@@ -268,11 +270,12 @@ export default function MuskegonPolishFestivalPage() {
             <div className="grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
               <div className="flex items-center justify-center py-2 sm:py-0">
                 <IPhoneFrame className="max-w-[220px]" screenClassName="bg-[#fffdf9]">
-                  <Image
-                    src={muskegonMobileDemo}
-                    alt="Muskegon mobile demo gif"
-                    className="h-full w-full object-cover"
-                    unoptimized
+                  <VimeoEmbed
+                    src={muskegonMobileDemoVimeoUrl}
+                    title="Muskegon mobile demo"
+                    className="h-full w-full"
+                    iframeClassName="h-full w-full"
+                    cover
                   />
                 </IPhoneFrame>
               </div>
@@ -280,11 +283,12 @@ export default function MuskegonPolishFestivalPage() {
               <div className="flex items-center justify-center py-2 sm:py-0">
                 <AndroidTabletFrame className="max-w-[950px]" screenClassName="bg-[#fffdf9]">
                   <div className="h-full w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
-                    <Image
-                      src={muskegonTabletDemo}
-                      alt="Muskegon tablet demo gif"
-                      className="h-full w-full object-cover object-top"
-                      unoptimized
+                    <VimeoEmbed
+                      src={muskegonTabletDemoVimeoUrl}
+                      title="Muskegon tablet demo"
+                      className="h-full w-full"
+                      iframeClassName="h-full w-full object-cover object-top"
+                      cover
                     />
                   </div>
                 </AndroidTabletFrame>

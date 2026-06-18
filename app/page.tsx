@@ -8,14 +8,12 @@ import IPhoneFrame from "./IPhoneFrame";
 import AndroidTabletFrame from "./AndroidTabletFrame";
 import { useTheme } from "./ThemeProvider";
 import VimeoEmbed from "./VimeoEmbed";
-import muskegonMobile from "./polishfestival/Muskegon Mobile Screenshot.jpeg";
-import muskegonTablet from "./polishfestival/Muskegon Tablet Screenshot.png";
-import muskegonTabletDemo from "./polishfestival/Muskegon Tablet Demo.gif";
 
 const codiDemoUrl = "https://player.vimeo.com/video/1167947118?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 const finalBuzzerDemoUrl = "https://player.vimeo.com/video/1167948538?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 const wildcatDemoUrl = "https://player.vimeo.com/video/1167948725?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 const meTimeDemoUrl = "https://player.vimeo.com/video/1167950147?autoplay=1&muted=1&loop=1&autopause=0&background=1";
+const muskegonDemoUrl = "https://player.vimeo.com/video/1202318788?autoplay=1&muted=1&loop=1&autopause=0&background=1";
 
 type ProjectOverlayState = {
   href: string;
@@ -647,11 +645,12 @@ export default function Home() {
                 <div className="mx-auto flex items-center justify-center sm:hidden">
                   <div className="w-[min(72vw,380px)] rounded-2xl bg-[#8a4a2b] shadow-md shadow-[#2e1c10]/20 sm:p-48 sm:pb-24 sm:pt-36">
                     <div className="overflow-hidden rounded-2xl bg-[#fffdf9] p-1.5">
-                      <Image
-                        src={muskegonTabletDemo}
-                        alt="Muskegon tablet demo"
-                        className="h-auto w-full object-contain"
-                        unoptimized
+                      <VimeoEmbed
+                        src={muskegonDemoUrl}
+                        title="Muskegon tablet demo"
+                        className="aspect-[5/3] w-full"
+                        iframeClassName="h-full w-full"
+                        cover
                       />
                     </div>
                   </div>
@@ -660,14 +659,13 @@ export default function Home() {
                 <div className="mx-auto hidden min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:flex sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
                   <div className="flex items-center justify-center">
                     <AndroidTabletFrame className="max-w-[420px]" screenClassName="bg-[#fffdf9]">
-                      <div className="h-full w-full overflow-hidden rounded-[1.15rem] bg-[#fffdf9]">
-                        <Image
-                          src={muskegonTabletDemo}
-                          alt="Muskegon tablet demo"
-                          className="h-full w-full object-cover scale-[1] object-top"
-                          unoptimized
-                        />
-                      </div>
+                      <VimeoEmbed
+                        src={muskegonDemoUrl}
+                        title="Muskegon tablet demo"
+                        className="h-full w-full"
+                        iframeClassName="h-full w-full"
+                        cover
+                      />
                     </AndroidTabletFrame>
                   </div>
                 </div>
