@@ -11,36 +11,11 @@ export const metadata = {
     "A React-based study dashboard with an exam countdown and planned vs actual time tracking.",
 };
 
-const overview = [
-  "Accountability: Built a real time loop so students can compare plan vs actual effort instantly.",
-  "Execution: Shipped timer and workload workflows that convert intention into measurable execution.",
-  "Quality: Improved accessibility and responsive UX through targeted audits and implementation fixes.",
-];
-
 const role = "Frontend React Developer";
-const timeline = "February - April 2025 (SI579/SI539 Course Project)";
+const timeline = "February 2025 - April 2025";
 
 const demoLinks = [
   { label: "Live Site", href: "https://siraajkudtarkar.github.io/the-final-buzzer/" },
-];
-
-const highlightGroups = [
-  {
-    title: "Execution",
-    items: [
-      "Core features: Shipped countdown timer, task CRUD, and time tracking controls.",
-      "Data flow: Added local persistence to preserve study history across sessions.",
-      "UX clarity: Built a dashboard that summarizes workload and real progress.",
-    ],
-  },
-  {
-    title: "Accessibility Impact",
-    items: [
-      "Inclusive UX: Validated keyboard navigation and baseline screen reader behavior.",
-      "Implementation: Improved labels and structure for assistive technology support.",
-      "Responsiveness: Refined layouts to keep dashboard usability on small screens.",
-    ],
-  },
 ];
 
 const homepagePills = ["React", "Node", "JavaScript", "HTML/CSS", "Frontend Development", "Web Accessibility"];
@@ -50,49 +25,27 @@ const stackDev = [...homepagePills];
 const stackDesign = [
   "Accessibility audit (manual testing)",
   "Keyboard navigation testing",
-  "Screen reader testing (VoiceOver)",
+  "Screen reader testing",
   "Responsive layout testing",
   "WCAG-informed improvements",
-];
-
-const outcomes = [
-  "Delivery: Shipped a production ready study workflow from planning to time tracking.",
-  "Engineering growth: Strengthened real time state management and timer architecture.",
-  "Quality mindset: Embedded accessibility checks during build, not post launch.",
-  "Learning: Improved how I design for accessibility while shipping quickly.",
 ];
 
 const finalBuzzerDesktopDemoVimeoUrl = "https://player.vimeo.com/video/1167950430?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
 const finalBuzzerMobileDemoVimeoUrl = "https://player.vimeo.com/video/1167948538?autoplay=1&muted=1&loop=1&autopause=0&background=1&title=0&byline=0&portrait=0&dnt=1";
 
-const renderImpactLine = (line: string) => {
-  const [lead, ...rest] = line.split(": ");
-  if (!rest.length) return <>{line}</>;
-  return (
-    <>
-      <strong>{lead}</strong>
-      {rest.length ? `: ${rest.join(": ")}` : ""}
-    </>
-  );
-};
-
 export default function FinalBuzzerPage() {
   return (
-    <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f9f4ec] text-[#2e1c10] dark:bg-black dark:text-white">
-      <main className="mx-auto max-w-4xl px-5 pb-20 pt-14 sm:px-8 lg:px-12">
-        <div className="sm:hidden">
-          <ProjectNav />
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-3">
+    <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
+      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+        <ProjectNav />
+        {/* <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-3">
-            {/* View Live Site button (same styling as repo button) */}
             <a
-              className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-4 py-2 text-sm font-semibold text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+              className="inline-flex items-center gap-2 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-4 py-2 text-sm font-semibold text-[#4a3222] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#e2cfbb] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
               href="https://siraajkudtarkar.github.io/the-final-buzzer/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {/* external-link icon */}
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -107,10 +60,8 @@ export default function FinalBuzzerPage() {
               </svg>
               <span>View Live Site</span>
             </a>
-
-            {/* View Repository button */}
             <a
-              className="inline-flex items-center gap-2 rounded-full border border-[#e6d8c8] bg-[#fffbf7] px-4 py-2 text-sm font-semibold text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#e4d4c6] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+              className="inline-flex items-center gap-2 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-4 py-2 text-sm font-semibold text-[#4a3222] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#e2cfbb] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
               href="https://github.com/siraajkudtarkar/the-final-buzzer"
               target="_blank"
               rel="noopener noreferrer"
@@ -121,74 +72,54 @@ export default function FinalBuzzerPage() {
               <span>View Repository</span>
             </a>
           </div>
-        </div>
+        </div> */}
 
-        <section className="mt-6 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-6 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
-          <p className="text-2xl font-semibold leading-tight text-[#2e1c10] sm:text-3xl dark:text-white">
+        <section className="p-8">
+          <p className="text-2xl text-center font-bold leading-tight text-[#251409] sm:text-3xl dark:text-white">
             How can students see in real time whether they are actually following their exam prep plan?
           </p>
         </section>
 
-        <header className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-lg shadow-[#2e1c10]/10 backdrop-blur dark:border-[#3b2a1f] dark:bg-black">
-          <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-[#5a4030] dark:text-white">
-            {homepagePills.map((pill) => (
-              <span key={pill} className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-                {pill}
-              </span>
-            ))}
-          </div>
-
+        <header className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-lg shadow-[#251409]/10 backdrop-blur dark:border-[#3e2d20] dark:bg-[#221810]/85">
           <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#7a5a42] dark:text-[#d7c4b6]">Project</p>
             <h1 className="text-3xl font-semibold">The Final Buzzer</h1>
-            <p className="text-sm font-semibold text-[#7a5a42] dark:text-[#cbb8aa]">Education</p>
-            <p className="text-base leading-7 text-[#5a4030] dark:text-white">
-              A React web app that helps students prep for exams with a real-time countdown and a
-              dashboard that compares planned versus actual study time.
-            </p>
-            <p className="text-base leading-7 text-[#5a4030] dark:text-white">
-              This project focuses on <strong>behavior change</strong>. Students get constant visual feedback on whether they are executing their plan.
+            <p className="text-sm font-semibold text-[#664834] dark:text-[#c2a88f]">Education</p>
+            <p className="text-base leading-7 text-[#4a3222] dark:text-white">
+              A React web app that helps students prep for exams with a real-time countdown and a dashboard that compares planned versus actual study time. This project focuses on behavior change: students get constant visual feedback on whether they are executing their plan. I built it on my own for one course, then ran a full accessibility audit on it for a second course.
             </p>
 
             <HeroMediaPicker
               desktopImage={finalBuzzerDashboard}
               mobileImage={finalBuzzerMobile}
-              desktopAlt="The Final Buzzer desktop dashboard"
+              desktopAlt="The Final Buzzer desktop screenshot"
               mobileAlt="The Final Buzzer mobile screenshot"
               mobileIphoneFrame
             />
           </div>
         </header>
 
-        <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-8 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
-          <h2 className="text-lg font-semibold">Overview</h2>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Role</p>
-              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{role}</p>
-            </div>
-            <div className="rounded-2xl border border-[#e6d8c8] bg-[#fffbf7] px-4 py-3 dark:border-[#3b2a1f] dark:bg-[#121212]">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a5a42] dark:text-[#d7c4b6]">Timeline</p>
-              <p className="mt-1 text-sm font-semibold text-[#2e1c10] dark:text-white">{timeline}</p>
-            </div>
-          </div>
-          <div className="space-y-3 text-sm leading-6 text-[#5a4030] dark:text-white">
-            {overview.map((line) => (
-              <p key={line}>{renderImpactLine(line)}</p>
-            ))}
-          </div>
+        <div className="grid gap-2 sm:grid-cols-2">
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-md shadow-[#251409]/8 dark:border-[#3e2d20] dark:bg-[#221810]/85">
+          <h2 className="text-lg font-semibold">Role</h2>
+              <p className="mt-1 text-sm font-medium text-[#251409] dark:text-white">{role}</p>
         </section>
 
-        <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-black">
-          <h2 className="text-lg font-semibold">Stack / Tools</h2>
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-md shadow-[#251409]/8 dark:border-[#3e2d20] dark:bg-[#221810]/85">
+          <h2 className="text-lg font-semibold">Timeline</h2>
+          <p className="mt-1 text-sm font-medium text-[#251409] dark:text-white">{timeline}</p>
+        </section>
+        </div>
+
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-inner shadow-[#251409]/6 dark:border-[#3e2d20] dark:bg-[#221810]/85">
+          <h2 className="text-lg font-semibold">Stack & Methods</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#7a5a42] dark:text-[#d7c4b6]">Development</p>
-              <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#5a4030] dark:text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Development</p>
+              <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#4a3222] dark:text-white">
                 {stackDev.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white"
+                    className="rounded-full bg-[#f0e4d1] px-3 py-1 text-[#251409] dark:bg-[#2d2116] dark:text-white"
                   >
                     {tech}
                   </span>
@@ -197,12 +128,12 @@ export default function FinalBuzzerPage() {
             </div>
 
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#7a5a42] dark:text-[#d7c4b6]">Design & Research</p>
-              <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#5a4030] dark:text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Design & Research</p>
+              <div className="flex flex-wrap gap-2 text-xs font-semibold text-[#4a3222] dark:text-white">
                 {stackDesign.map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full bg-[#f6ebdf] px-3 py-1 text-[#2e1c10] dark:bg-[#121212] dark:text-white"
+                    className="rounded-full bg-[#f0e4d1] px-3 py-1 text-[#251409] dark:bg-[#2d2116] dark:text-white"
                   >
                     {tool}
                   </span>
@@ -212,7 +143,7 @@ export default function FinalBuzzerPage() {
           </div>
         </section>
 
-        <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-8 shadow-inner shadow-[#2e1c10]/6 dark:border-[#3b2a1f] dark:bg-black">
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-inner shadow-[#251409]/6 dark:border-[#3e2d20] dark:bg-[#221810]/85">
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <HeroMediaPicker
@@ -229,13 +160,13 @@ export default function FinalBuzzerPage() {
               {demoLinks.map((link) => (
                 <a
                   key={link.label}
-                  className="inline-flex items-center justify-between gap-2 rounded-2xl border border-[#e6d8c8] px-4 py-3 text-sm font-semibold text-[#5a4030] transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:text-white dark:hover:border-[#5a3e2c] dark:hover:bg-[#121212]"
+                  className="inline-flex items-center justify-between gap-2 rounded-2xl border border-[#dfceb6] px-4 py-3 text-sm font-semibold text-[#4a3222] transition hover:-translate-y-0.5 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:text-white dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
                   <span>{link.label}</span>
-                  <span aria-hidden className="text-[#8a4a2b] dark:text-white">
+                  <span aria-hidden className="text-[#7a3f22] dark:text-white">
                     ↗
                   </span>
                 </a>
@@ -244,48 +175,51 @@ export default function FinalBuzzerPage() {
           </div>
         </section>
 
-        <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-8 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
-          <h2 className="text-lg font-semibold">Highlights (My Key Contributions)</h2>
-          <div className="space-y-6">
-            {highlightGroups.map((group) => (
-              <div key={group.title} className="space-y-3">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#f6ebdf] px-3 py-1 text-xs font-semibold text-[#2e1c10] dark:bg-[#121212] dark:text-white">
-                  <span>⭐</span>
-                  <span>{group.title}</span>
-                </div>
-                <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
-                  {group.items.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
-                      <span>{renderImpactLine(item)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-md shadow-[#251409]/8 dark:border-[#3e2d20] dark:bg-[#221810]/85">
+          <h2 className="text-lg font-semibold">My Work</h2>
+          <div className="space-y-4 text-base leading-7 text-[#4a3222] dark:text-white">
+            <p>
+              The project started from one question: how can students see in real time whether they are actually following their exam prep plan? I wanted one project to satisfy two courses: SI 579, which asked for an interactive JavaScript application, and SI 539, which focused on accessibility audits and semantic HTML. The Final Buzzer became both, built for university students who want a visual reminder of their exam deadline and a structured way to track their time, including students who rely on keyboard navigation or screen readers.
+            </p>
+            <p>
+              For SI 579, I built a real time loop so students can compare plan versus actual effort instantly. I shipped the countdown timer, task CRUD, and time tracking controls. A large exam countdown shows the days, hours, and minutes left and updates in real time, students can add, edit, and delete study tasks with a planned time estimate, and every task has Record and Stop buttons that log the actual time spent with timestamps. I added local persistence to preserve study history across sessions and built a dashboard that summarizes workload and real progress, showing each task's planned versus actual time and the total time studied. I deployed the finished app on GitHub Pages.
+            </p>
+            <p>
+              For SI 539, I ran an in-depth accessibility audit of the deployed site using WAVE, axe DevTools, and Chrome, along with manual testing through VoiceOver and keyboard-only navigation. The audit uncovered real problems. VoiceOver could not read anything beyond the logo, and I could not reach everything with just a keyboard, because the page was missing the tab order needed for navigation. The task time fields were missing labels and ARIA attributes, the checkbox and delete icon were nested inside another interactive control, a list used a div instead of a proper list item, and on mobile the button and timer text was too small. Color contrast and image alt text passed.
+            </p>
+            <p>
+              The hardest part was understanding how React interacts with accessibility standards. Unlike static HTML, React builds the page dynamically through JavaScript components, so some problems were not visible until I tested with assistive technology. I spent most of my time researching accessible React development, especially how attributes like aria-label work in components, and then testing my changes by hand. Over the last two weeks of the project, I put in about 19 hours, working through aria-labels, keyboard navigation, VoiceOver support, color contrast, and mobile layout testing. That hands-on testing showed me firsthand the barriers users face and how technical changes translate into real-world usability.
+            </p>
           </div>
         </section>
 
-        <section className="mt-6 space-y-4 rounded-3xl border border-[#e6d8c8] bg-[#fffdf9]/95 p-8 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black">
+        <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-md shadow-[#251409]/8 dark:border-[#3e2d20] dark:bg-[#221810]/85">
           <h2 className="text-lg font-semibold">Outcome</h2>
-          <ul className="space-y-2 text-sm leading-6 text-[#5a4030] dark:text-white">
-            {outcomes.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b67346]" aria-hidden />
-                <span>{renderImpactLine(item)}</span>
-              </li>
-            ))}
-          </ul>
+            <div className="space-y-4 text-base leading-7 text-[#4a3222] dark:text-white">
+            <p>
+              I shipped timer and workload workflows that convert intention into measurable execution, from planning to time tracking, with the app live on GitHub Pages. I then used my audit to improve labels and structure for assistive technology support, validated keyboard navigation and baseline screen reader behavior, and tested color contrast and the mobile layout. The site is more accessible but not fully accessible yet, and the audit gives me a clear, documented list of what remains. The project strengthened my real time state management and timer architecture and improved how I design for accessibility while shipping quickly.
+            </p>
+            </div>
         </section>
 
-        <div className="mt-8 flex flex-wrap gap-3 text-base font-semibold">
+        <div className="mt-8 mb-8 flex flex-wrap gap-3 text-base font-semibold">
           <Link
-            className="inline-flex items-center gap-2 rounded-full border border-[#7f4b28] bg-[#8a4a2b] px-6 py-3 text-white shadow-md shadow-[#2e1c10]/20 transition hover:-translate-y-0.5 hover:bg-[#6f3b22] hover:text-white hover:shadow-lg hover:shadow-[#2e1c10]/30 dark:border-[#e6d8c8] dark:bg-[#f7ede4] dark:text-[#2e1c10] dark:hover:bg-[#e6d8c8] dark:hover:text-[#2e1c10]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#6f3f20] bg-[#7a3f22] px-6 py-3 text-white shadow-md shadow-[#251409]/20 transition hover:-translate-y-0.5 hover:bg-[#5c3119] hover:text-white hover:shadow-lg hover:shadow-[#251409]/30 dark:border-[#dfceb6] dark:bg-[#f5e6d6] dark:text-[#251409] dark:hover:bg-[#dfceb6] dark:hover:text-[#251409]"
             href="/#contact"
           >
             Questions? Contact me
           </Link>
+          <Link
+            className="ml-auto inline-flex items-center gap-2 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-6 py-3 text-[#4a3222] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#f5e6d6] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
+            href="/wildcat"
+          >
+            Next Project: Wildcat Fantasy Football
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
         </div>
+        <SiteFooter />
       </main>
     </div>
   );

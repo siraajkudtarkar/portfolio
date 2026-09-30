@@ -1,32 +1,27 @@
 import Link from "next/link";
 
 type SiteFooterProps = {
-  projectPage?: boolean;
+  className?: string;
 };
 
-export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
-  const homeHref = projectPage ? "/#top" : "#top";
-  const workHref = projectPage ? "/#work" : "#work";
-  const aboutHref = projectPage ? "/#about" : "#about";
-  const contactHref = projectPage ? "/#contact" : "#contact";
-  const containerClass = projectPage
-    ? "mt-8 rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/95 p-6 shadow-md shadow-[#2e1c10]/8 dark:border-[#3b2a1f] dark:bg-black"
-    : "rounded-3xl border border-[#e6d8c8] bg-[#fffbf7]/90 p-6 shadow-lg shadow-[#2e1c10]/8 backdrop-blur dark:border-[#3b2a1f] dark:bg-[#1a120c]/85 dark:text-[#f7ede4]";
+export default function SiteFooter({ className = "" }: SiteFooterProps) {
+  const homeHref = "/#top";
+  const workHref = "/#work";
+  const contactHref = "/#contact";
 
   return (
-    <footer className={containerClass}>
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="space-y-1.5">
-          <p className="text-lg font-semibold tracking-tight text-[#2e1c10] dark:text-[#f7ede4]">Siraaj Kudtarkar</p>
+    <footer className={`rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/90 p-4 shadow-lg shadow-[#251409]/8 backdrop-blur dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#f5e6d6] ${className}`}>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-lg font-semibold text-[#251409] dark:text-[#f5e6d6]">Siraaj Kudtarkar</p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-start gap-3 text-sm font-medium text-[#5a4030] dark:text-[#e4d4c6] sm:justify-end">
-          <Link className="hover:text-[#8a4a2b] dark:hover:text-white" href={homeHref}>Home</Link>
-          <Link className="hover:text-[#8a4a2b] dark:hover:text-white" href={workHref}>Work</Link>
-          <Link className="hover:text-[#8a4a2b] dark:hover:text-white" href={aboutHref}>About</Link>
-          <Link className="hover:text-[#8a4a2b] dark:hover:text-white" href={contactHref}>Contact</Link>
+        <div className="flex flex-wrap items-center justify-start gap-4 text-sm font-medium text-[#4a3222] dark:text-[#e2cfbb] sm:justify-end">
+          <Link className="hover:text-[#7a3f22] dark:hover:text-white" href={homeHref}>Home</Link>
+          <Link className="hover:text-[#7a3f22] dark:hover:text-white" href={workHref}>Work</Link>
+          <Link className="hover:text-[#7a3f22] dark:hover:text-white" href={contactHref}>Contact</Link>
           <a
-            className="hover:text-[#8a4a2b] dark:hover:text-white"
+            className="hover:text-[#7a3f22] dark:hover:text-white"
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -35,7 +30,7 @@ export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
           </a>
           <div className="flex items-center gap-2">
             <a
-              className="inline-flex items-center justify-center rounded-full border border-[#e6d8c8] bg-[#fffbf7] p-2 text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+              className="inline-flex items-center justify-center rounded-full border border-[#dfceb6] bg-[#f7eedf] p-2 text-[#4a3222] hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#f5e6d6] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
               href="https://github.com/siraajkudtarkar"
               target="_blank"
               rel="noopener noreferrer"
@@ -47,7 +42,7 @@ export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
               </svg>
             </a>
             <a
-              className="inline-flex items-center justify-center rounded-full border border-[#e6d8c8] bg-[#fffbf7] p-2 text-[#5a4030] shadow-sm transition hover:-translate-y-0.5 hover:border-[#c9a988] hover:bg-[#f6ebdf] dark:border-[#3b2a1f] dark:bg-[#1a120c] dark:text-[#f7ede4] dark:hover:border-[#5a3e2c] dark:hover:bg-[#2a1b12]"
+              className="inline-flex items-center justify-center rounded-full border border-[#dfceb6] bg-[#f7eedf] p-2 text-[#4a3222] hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:bg-[#221810] dark:text-[#f5e6d6] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
               href="https://www.linkedin.com/in/siraaj-kudtarkar"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,11 +57,11 @@ export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 border-t border-[#e6d8c8] pt-4 text-sm dark:border-[#3b2a1f] sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-[#7a5a42] dark:text-[#cbb8aa]">
+      <div className="mt-4 flex flex-col gap-4 border-t border-[#dfceb6] pt-4 text-sm dark:border-[#3e2d20] sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-[#664834] dark:text-[#c2a88f]">
           Designed and developed using Tailwind CSS, Motion, and Next.js by{" "}
           <a
-            className="font-semibold hover:text-[#8a4a2b] dark:hover:text-white"
+            className="font-semibold hover:text-[#7a3f22] dark:hover:text-white"
             href="https://www.linkedin.com/in/siraaj-kudtarkar"
             target="_blank"
             rel="noopener noreferrer"
@@ -75,7 +70,7 @@ export default function SiteFooter({ projectPage = false }: SiteFooterProps) {
           </a>
           .
         </p>
-        <p className="text-xs text-[#7a5a42] dark:text-[#cbb8aa]">© {new Date().getFullYear()} Siraaj Kudtarkar. All rights reserved.</p>
+        <p className="text-sm text-[#664834] dark:text-[#c2a88f]">© {new Date().getFullYear()} Siraaj Kudtarkar. All rights reserved.</p>
       </div>
     </footer>
   );

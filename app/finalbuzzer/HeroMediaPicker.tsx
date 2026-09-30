@@ -31,14 +31,14 @@ export default function HeroMediaPicker({
   return (
     <div className="mt-4 space-y-3">
       <div className="flex justify-end">
-        <div className="inline-flex items-center overflow-hidden rounded-full border border-[#e6d8c8] bg-[#fffbf7] text-xs font-semibold text-[#5a4030] shadow-sm dark:border-[#3b2a1f] dark:bg-black dark:text-white">
+        <div className="inline-flex items-center overflow-hidden rounded-full border border-[#dfceb6] bg-[#f7eedf] text-xs font-semibold text-[#4a3222] shadow-sm dark:border-[#3e2d20] dark:bg-[#221810] dark:text-white">
           <button
             type="button"
             aria-pressed={viewMode === "desktop"}
             className={`px-4 py-2 transition ${
               viewMode === "desktop"
-                ? "bg-[#9d5e34] text-white shadow-inner shadow-[#2e1c10]/20 dark:bg-[#9d5e34] dark:text-white"
-                : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
+                ? "bg-[#8a4f2a] text-white shadow-inner shadow-[#251409]/20 dark:bg-[#8a4f2a] dark:text-white"
+                : "text-[#4a3222] hover:bg-[#f0e4d1] dark:text-[#cdb69f] dark:hover:bg-[#2d2116]"
             }`}
             onClick={() => setViewMode("desktop")}
           >
@@ -49,8 +49,8 @@ export default function HeroMediaPicker({
             aria-pressed={viewMode === "mobile"}
             className={`px-4 py-2 transition ${
               viewMode === "mobile"
-                ? "bg-[#2e1c10] text-[#f7ede4] shadow-inner shadow-[#000]/20 dark:bg-[#f7ede4] dark:text-[#2e1c10]"
-                : "text-[#5a4030] hover:bg-[#f6ebdf] dark:text-[#d7c4b6] dark:hover:bg-[#2a1b12]"
+                ? "bg-[#251409] text-[#f5e6d6] shadow-inner shadow-[#000]/20 dark:bg-[#f5e6d6] dark:text-[#251409]"
+                : "text-[#4a3222] hover:bg-[#f0e4d1] dark:text-[#cdb69f] dark:hover:bg-[#2d2116]"
             }`}
             onClick={() => setViewMode("mobile")}
           >
@@ -60,7 +60,7 @@ export default function HeroMediaPicker({
       </div>
 
       {viewMode === "desktop" ? (
-        <div className="mx-auto -mx-2 w-[calc(100%+1rem)] max-w-[980px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-2 shadow-sm sm:mx-auto sm:w-full sm:p-4 dark:border-[#3b2a1f] dark:bg-black">
+        <div className="mx-auto -mx-2 w-[calc(100%+1rem)] max-w-[980px] overflow-hidden rounded-2xl border border-[#dfceb6] bg-[#f7eedf] p-2 shadow-sm sm:mx-auto sm:w-full sm:p-4 dark:border-[#3e2d20] dark:bg-[#221810]">
           {desktopVimeoUrl ? (
             <VimeoEmbed
               src={desktopVimeoUrl}
@@ -100,7 +100,7 @@ export default function HeroMediaPicker({
             </IPhoneFrame>
           </div>
         ) : (
-          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-[#e6d8c8] bg-[#fffdf9] p-3 shadow-sm dark:border-[#3b2a1f] dark:bg-black">
+          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-[#dfceb6] bg-[#f7eedf] p-3 shadow-sm dark:border-[#3e2d20] dark:bg-[#221810]">
             {mobileVimeoUrl ? (
               <VimeoEmbed
                 src={mobileVimeoUrl}
