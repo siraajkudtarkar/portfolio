@@ -13,7 +13,7 @@ type ProjectNavProps = {
 
 export default function ProjectNav({ activeSection, basePath = "/", className = "" }: ProjectNavProps) {
   const { theme, setTheme } = useTheme();
-  const navItemBaseClass = "inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]";
+  const navItemBaseClass = "inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 py-2 hover:border-[#b8956a] hover:bg-[#f7eedf] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]";
   const navLinkClass = (id: string) =>
     [
       navItemBaseClass,
@@ -77,7 +77,7 @@ export default function ProjectNav({ activeSection, basePath = "/", className = 
           </a>
         </div>
 
-        <div className="flex items-center gap-1 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-1.5 py-1 shadow-sm dark:border-[#3e2d20] dark:bg-[#221810]">
+        <div className="flex items-center gap-2 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-0.5 py-0.5 shadow-sm dark:border-[#3e2d20] dark:bg-[#221810]">
           {(["light", "dark", "system"] as const).map((mode) => {
             const active = theme === mode;
             const label = mode === "light" ? "Light mode" : mode === "dark" ? "Dark mode" : "System setting";
@@ -106,7 +106,7 @@ export default function ProjectNav({ activeSection, basePath = "/", className = 
                 type="button"
                 className={`flex items-center justify-center rounded-full p-2 transition ${
                   active
-                    ? "bg-[#8a4f2a] text-white shadow-inner shadow-[#251409]/15"
+                    ? "bg-[#ac5d2c] text-white shadow-inner shadow-[#251409]/15 dark:bg-[#8a4f2a]"
                     : "text-[#4a3222] hover:bg-[#f0e4d1] dark:text-white dark:hover:bg-[#2d2116]"
                 }`}
                 aria-label={label}

@@ -18,7 +18,7 @@ const muskegonDemoUrl = "https://player.vimeo.com/video/1202318788?autoplay=1&mu
 const projects = [
   {
     title: "Codi",
-    productType: "healthcare",
+    productType: "Healthcare",
     summary: "Designed a collaborative mobile application for children with diabetes and parents supported by a University of Michigan-backed research study.",
     stack: ["React Native", "TypeScript", "Firebase", "OpenAI", "Expo", "Node", "Frontend Development", "Full-Stack Development", "UX Design & Research", "Cross Collaboration"],
     link: "/codi",
@@ -46,7 +46,7 @@ const projects = [
   },
   {
     title: "MeTime",
-    productType: "health & wellness",
+    productType: "Health & Wellness",
     summary: "Developed a solution for sustainable wellness habits among busy students — won Boston University's Catalyst Designathon and the UCR Blackstone Launchpad Ideas Competition.",
     stack: ["Figma", "UI/UX Design", "UX Research", "Next.js", "JavaScript", "HTML/CSS", "Google Cloud API", "MongoDB", "Cross Collaboration"],
     link: "/metime",
@@ -195,7 +195,7 @@ export default function Home() {
 
   const getProjectSkillPillClass = (tech: string) => {
     if (isSkillHighlighted(tech)) {
-      return "bg-[#8a4f2a] text-white dark:bg-[#f5e6d6] dark:text-[#251409]";
+      return "bg-[#ac5d2c] text-white dark:bg-[#f5e6d6] dark:text-[#251409]";
     }
 
     if (activeSkills.length > 0) {
@@ -244,7 +244,7 @@ export default function Home() {
 
   return (
     <div id="top" className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#17100a] dark:text-[#f5e6d6]">
-      <main className="flex min-h-screen flex-col gap-12 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-12 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav activeSection={activeSection} basePath="" />
         <header
           id="home"
@@ -277,7 +277,7 @@ export default function Home() {
                 aria-pressed={isProfessional}
                 className={`flex w-full items-center justify-center gap-2 whitespace-nowrap px-4 py-2 transition ${
                   isProfessional
-                    ? "bg-[#8a4f2a] text-white shadow-inner shadow-[#251409]/20 dark:bg-[#8a4f2a] dark:text-white"
+                    ? "bg-[#ac5d2c] text-white shadow-inner shadow-[#251409]/20 dark:bg-[#8a4f2a] dark:text-white"
                     : "text-[#4a3222] hover:bg-[#f0e4d1] dark:text-[#cdb69f] dark:hover:bg-[#2d2116]"
                 }`}
                 onClick={() => {
@@ -305,10 +305,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div className="grid gap-10 lg:grid-cols-[0.80fr_1.05fr] lg:items-center">
+            <div className="flex flex-col items-center justify-center sm:flex-row">
               <div className="flex flex-col items-center gap-4">
-                <div className="h-80 w-80 rounded-3xl border border-[#dfceb6] bg-[#faf4e1] p-2 shadow-inner shadow-[#251409]/6 sm:h-[22rem] sm:w-[22rem] dark:border-[#3e2d20] dark:bg-[#221810]">
+                <div className="h-80 w-80 rounded-3xl sm:h-[22rem] sm:w-[22rem]">
                   <div className="relative h-full w-full overflow-hidden rounded-2xl">
                     <Image
                       src={
@@ -333,7 +333,7 @@ export default function Home() {
                   </div>
                 </div>
                 {!isProfessional && (
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-4">
                     {(["food", "music", "sports"] as const).map((interest) => (
                       <button
                         key={interest}
@@ -364,123 +364,116 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <div id="about" className="scroll-mt-24 space-y-6">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="text-sm uppercase font-medium tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Hi there! 👋🏾</p>
-                </div>
-                <h1 className="text-3xl font-medium text-[#4a3222] dark:text-[#e2cfbb]">
-                  {isProfessional ? (
-                    <>
+            <div id="about" className="space-y-8 lg:self-start">
+              <div className="space-y-4">
+                <p className="uppercase font-medium text-[#664834] dark:text-[#cdb69f]">Hi there! 👋🏾</p>
+                <div className="grid">
+                  {/* Professional variant: stacked in the same grid cell as the personal variant below so the
+                      taller of the two sets this block's height — switching never shifts the content after it. */}
+                  <div
+                    aria-hidden={!isProfessional}
+                    className={`col-start-1 row-start-1 space-y-4 transition-opacity duration-200 ${
+                      isProfessional ? "opacity-100" : "pointer-events-none opacity-0"
+                    }`}
+                  >
+                    <h1 className="text-3xl font-medium text-[#4a3222] dark:text-[#e2cfbb]">
                       I build <strong className="font-extrabold"> accessible digital products</strong> bridging <strong className="font-extrabold">design and engineering</strong>.
-                    </>
-                  ) : (
-                    <>
-                      I opt for <strong className="font-extrabold"> simplicity. </strong> 😃
-                    </>
-                  )}
-                </h1>
-                <div className="pt-1">
-                  <p className="text-base font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">{isProfessional ? "" : ""}</p>
-                  {!isProfessional && (
-                    <p className="mt-1 flex items-center gap-1.5 text-base italic text-[#664834] dark:text-[#cdb69f]">
-                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                        <circle cx="8.5" cy="8.5" r="1.5" />
-                        <path d="M21 15l-5-5L5 21" />
-                      </svg>
-                      {isTouchPreviewDevice ? "Tap a line below to see a photo" : "Hover a line below to see a photo"}
-                    </p>
-                  )}
-                  <div className="mt-2 space-y-2.5">
-                    {isProfessional ? (
-                      <>
-                        <div className="flex items-start gap-2">
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#7a3f22]" aria-hidden />
-                          <p>Software Engineering & Front-End Development (React, React Native, JavaScript)</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                          <p>Web & Mobile Full-Stack Application Development</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
-                          <p>UI/UX Design & Research (usability testing, prototyping, wireframing)</p>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div
-                          className={`flex cursor-pointer items-start gap-2 rounded-lg px-1 py-0.5 -mx-1 transition ${
-                            hoveredInterest === "food" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
-                          }`}
-                          onMouseEnter={() => handleInterestEnter("food")}
-                          onMouseLeave={() => handleInterestLeave("food")}
-                          onClick={() => handleInterestToggle("food")}
-                        >
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#7a3f22]" aria-hidden />
-                          <p
-                            className={`underline decoration-dotted decoration-2 underline-offset-4 transition ${
+                    </h1>
+                    <div className="space-y-4">
+                      <ul className="list-disc list-inside marker:text-2xl">
+                        <li>Software Engineering & Front-End Development (React, React Native, JavaScript)</li>
+                        <li>Web & Mobile Full-Stack Application Development</li>
+                        <li>UI/UX Design & Research (usability testing, prototyping, wireframing)</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Personal variant */}
+                  <div
+                    aria-hidden={isProfessional}
+                    className={`col-start-1 row-start-1 space-y-4 transition-opacity duration-200 ${
+                      !isProfessional ? "opacity-100" : "pointer-events-none opacity-0"
+                    }`}
+                  >
+                    <h1 className="text-3xl font-medium text-[#4a3222] dark:text-[#e2cfbb]">
+                      I am a <strong className="font-extrabold"> simple guy. </strong> 😃
+                    </h1>
+                    <div>
+                      <p className="flex items-center gap-2 mb-4 text-base italic text-[#664834] dark:text-[#cdb69f]">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" />
+                          <circle cx="8.5" cy="8.5" r="1.5" />
+                          <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        {isTouchPreviewDevice ? "Tap a line below to see a photo" : "Hover a line below to see a photo"}
+                      </p>
+                      <div className="space-y-4">
+                        <ul className="list-disc list-inside marker:text-2xl">
+                          <div
+                            className={`flex cursor-pointer items-start gap-2 rounded-lg transition ${
+                              hoveredInterest === "food" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
+                            }`}
+                            onMouseEnter={() => handleInterestEnter("food")}
+                            onMouseLeave={() => handleInterestLeave("food")}
+                            onClick={() => handleInterestToggle("food")}
+                          >
+                            <li className={`underline decoration-double decoration-2 underline-offset-4 transition ${
                               hoveredInterest === "food"
                                 ? "text-[#7a3f22] decoration-[#7a3f22] dark:text-[#d19a6a] dark:decoration-[#d19a6a]"
                                 : "decoration-[#b8956a] dark:decoration-[#6b4c35]"
+                            }`}>I am a big foodie with a huge list of restaurants in my &quot;Want to Go&quot; on Google Maps</li>
+                          </div>
+                          <div
+                            className={`flex cursor-pointer items-start gap-2 rounded-lg transition ${
+                              hoveredInterest === "music" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
                             }`}
+                            onMouseEnter={() => handleInterestEnter("music")}
+                            onMouseLeave={() => handleInterestLeave("music")}
+                            onClick={() => handleInterestToggle("music")}
                           >
-                            I am a huge foodie and have an endless list of restaurants in my &quot;Want to Go&quot; on Google Maps
-                          </p>
-                        </div>
-                        <div
-                          className={`flex cursor-pointer items-start gap-2 rounded-lg px-1 py-0.5 -mx-1 transition ${
-                            hoveredInterest === "music" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
-                          }`}
-                          onMouseEnter={() => handleInterestEnter("music")}
-                          onMouseLeave={() => handleInterestLeave("music")}
-                          onClick={() => handleInterestToggle("music")}
-                        >
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#b36b3f]" aria-hidden />
-                          <p
-                            className={`underline decoration-dotted decoration-2 underline-offset-4 transition ${
-                              hoveredInterest === "music"
-                                ? "text-[#7a3f22] decoration-[#7a3f22] dark:text-[#d19a6a] dark:decoration-[#d19a6a]"
-                                : "decoration-[#b8956a] dark:decoration-[#6b4c35]"
+                            <li
+                              className={`underline decoration-double decoration-2 underline-offset-4 transition ${
+                                hoveredInterest === "music"
+                                  ? "text-[#7a3f22] decoration-[#7a3f22] dark:text-[#d19a6a] dark:decoration-[#d19a6a]"
+                                  : "decoration-[#b8956a] dark:decoration-[#6b4c35]"
+                              }`}
+                            >
+                              All I need are my headphones and freshly made masala chai
+                            </li>
+                          </div>
+                          <div
+                            className={`flex cursor-pointer items-start gap-2 rounded-lg transition ${
+                              hoveredInterest === "sports" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
                             }`}
+                            onMouseEnter={() => handleInterestEnter("sports")}
+                            onMouseLeave={() => handleInterestLeave("sports")}
+                            onClick={() => handleInterestToggle("sports")}
                           >
-                            All I need are my headphones and freshly made masala chai
-                          </p>
-                        </div>
-                        <div
-                          className={`flex cursor-pointer items-start gap-2 rounded-lg px-1 py-0.5 -mx-1 transition ${
-                            hoveredInterest === "sports" ? "bg-[#f0e4d1] dark:bg-[#2d2116]" : ""
-                          }`}
-                          onMouseEnter={() => handleInterestEnter("sports")}
-                          onMouseLeave={() => handleInterestLeave("sports")}
-                          onClick={() => handleInterestToggle("sports")}
-                        >
-                          <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[#d6a05a]" aria-hidden />
-                          <p
-                            className={`underline decoration-dotted decoration-2 underline-offset-4 transition ${
-                              hoveredInterest === "sports"
-                                ? "text-[#7a3f22] decoration-[#7a3f22] dark:text-[#d19a6a] dark:decoration-[#d19a6a]"
-                                : "decoration-[#b8956a] dark:decoration-[#6b4c35]"
-                            }`}
-                          >
-                            At any point, I am likely playing sports videogames or watching live sports
-                          </p>
-                        </div>
-                      </>
-                    )}
+                            <li
+                              className={`underline decoration-double decoration-2 underline-offset-4 transition ${
+                                hoveredInterest === "sports"
+                                  ? "text-[#7a3f22] decoration-[#7a3f22] dark:text-[#d19a6a] dark:decoration-[#d19a6a]"
+                                  : "decoration-[#b8956a] dark:decoration-[#6b4c35]"
+                              }`}
+                            >
+                              At any point, I am likely playing sports videogames or watching live sports
+                            </li>
+                          </div>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="grid w-full grid-cols-2 gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
-                <a className="col-span-2 inline-flex w-full items-center justify-center rounded-full bg-[#8a4f2a] px-5 py-2 text-white hover:bg-[#6f3f20] hover:text-white dark:bg-[#f5e6d6] dark:text-[#251409] dark:hover:bg-[#dfceb6] dark:hover:text-[#251409]" href="#contact">
+              <div className="grid w-full grid-cols-12 gap-4 text-med font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                <a className="col-span-10 inline-flex items-center justify-center rounded-full bg-[#ac5d2c] py-2 text-white hover:bg-[#6f3f20] hover:text-white dark:bg-[#f5e6d6] dark:text-[#251409] dark:hover:bg-[#dfceb6] dark:hover:text-[#251409]" href="#contact">
                   Send Message
                 </a>
-                <a className="inline-flex items-center justify-center gap-2 rounded-full border border-[#dfceb6] px-4 py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]" href="https://github.com/siraajkudtarkar" target="_blank" rel="noopener noreferrer">
+                <a className="col-span-5 inline-flex items-center justify-center gap-2 rounded-full border border-[#dfceb6] py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]" href="https://github.com/siraajkudtarkar" target="_blank" rel="noopener noreferrer">
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.45-2.69 5.43-5.25 5.71.41.35.77 1.05.77 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
                   <span>GitHub</span>
                 </a>
-                <a className="inline-flex items-center justify-center gap-2 rounded-full border border-[#dfceb6] px-4 py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]" href="https://www.linkedin.com/in/siraaj-kudtarkar" target="_blank" rel="noopener noreferrer">
+                <a className="col-span-5 inline-flex items-center justify-center gap-2 rounded-full border border-[#dfceb6] py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] dark:border-[#3e2d20] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]" href="https://www.linkedin.com/in/siraaj-kudtarkar" target="_blank" rel="noopener noreferrer">
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-current"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 8.98h3.96V21H3V8.98Zm6.74 0H14v1.65h.06c.42-.8 1.44-1.65 2.96-1.65C20.12 8.98 21 11 21 14.13V21h-3.96v-6.06c0-1.45-.03-3.3-2.01-3.3-2.02 0-2.33 1.58-2.33 3.2V21H8.74V8.98Z"/></svg>
                   <span>LinkedIn</span>
                 </a>
@@ -489,10 +482,10 @@ export default function Home() {
           </div>
 
           <div className="rounded-2xl border border-[#dfceb6] bg-[#f7eedf]/95 p-6 shadow-inner shadow-[#251409]/6 dark:border-[#3e2d20] dark:bg-[#221810]">
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Skills</p>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <p className="text-base font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Skills</p>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-medium text-[#6b4f39] dark:text-[#c2a88f]">Click to Highlight Skills in Projects</span>
+                <span className="text-sm text-[#6b4f39] dark:text-[#c2a88f]">Click to Highlight Skills in Projects</span>
                 {activeSkills.length > 0 ? (
                   <button
                     type="button"
@@ -531,7 +524,7 @@ export default function Home() {
                       onClick={() => toggleActiveSkill(skill)}
                       className={`whitespace-nowrap rounded-full px-3 py-1 font-medium transition ${
                         isSkillHighlighted(skill)
-                          ? "bg-[#8a4f2a] text-white dark:bg-[#f5e6d6] dark:text-[#251409]"
+                          ? "bg-[#ac5d2c] text-white dark:bg-[#f5e6d6] dark:text-[#251409]"
                           : "bg-[#f0e4d1] text-[#251409] hover:bg-[#e9d9bf] dark:bg-[#2d2116] dark:text-[#f5e6d6] dark:hover:bg-[#3a2a1e]"
                       }`}
                     >
@@ -566,7 +559,7 @@ export default function Home() {
                       onClick={() => toggleActiveSkill(skill)}
                       className={`whitespace-nowrap rounded-full px-3 py-1 font-medium transition ${
                         isSkillHighlighted(skill)
-                          ? "bg-[#8a4f2a] text-white dark:bg-[#f5e6d6] dark:text-[#251409]"
+                          ? "bg-[#ac5d2c] text-white dark:bg-[#f5e6d6] dark:text-[#251409]"
                           : "bg-[#f0e4d1] text-[#251409] hover:bg-[#e9d9bf] dark:bg-[#2d2116] dark:text-[#f5e6d6] dark:hover:bg-[#3a2a1e]"
                       }`}
                     >
@@ -588,10 +581,10 @@ export default function Home() {
           </div>
 
           <div className="space-y-8">
-            <article className="group rounded-none border-0 bg-[#f7eedf]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-lg hover:shadow-[#251409]/15 sm:rounded-2xl sm:bg-[#f7eedf] sm:p-8 sm:border sm:border-[#dfceb6] sm:shadow-sm dark:bg-[#221810]/85 dark:sm:rounded-2xl dark:sm:bg-[#221810] dark:sm:border-[#3e2d20]">
+            <article className="group rounded-none bg-[#f7eedf]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-lg hover:shadow-[#251409]/15 sm:rounded-2xl sm:bg-[#f7eedf] sm:p-8 sm:border sm:border-[#dfceb6] sm:shadow-sm dark:bg-[#221810]/85 dark:sm:rounded-2xl dark:sm:bg-[#221810] dark:sm:border-[#3e2d20]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
-                  <IPhoneFrame className="!max-w-[250px]">
+                  <IPhoneFrame className="!max-w-[400px]">
                     <VimeoEmbed
                       src={codiDemoUrl}
                       title="Codi demo"
@@ -603,16 +596,16 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#251409] transition group-hover:text-[#7a3f22] dark:text-[#f5e6d6] dark:group-hover:text-[#d19a6a]">{codiProject.title}</h3>
-                  <p className="text-sm font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#c2a88f]">{codiProject.productType}</p>
-                  <p className="text-lg leading-7 text-[#4a3222] dark:text-[#e2cfbb]">{codiProject.summary}</p>
-                  <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                  <p className="text-base font-semibold text-[#664834] dark:text-[#c2a88f]">{codiProject.productType}</p>
+                  <p className="text-lg text-[#4a3222] dark:text-[#e2cfbb]">{codiProject.summary}</p>
+                  <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
                     {codiProject.stack.map((tech) => (
-                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                      <span key={tech} className={`rounded-full px-4 py-2 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-4 flex items-center justify-end text-base font-semibold text-[#7a3f22] dark:text-[#d19a6a]">
+                  <div className="flex items-center justify-end text-base font-semibold text-[#7a3f22] dark:text-[#d19a6a]">
                     <a
                       className="inline-flex items-center gap-2 rounded-full border border-[#dfceb6] bg-[#f7eedf] px-4 py-2 hover:border-[#b8956a] hover:bg-[#f0e4d1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8a4f2a] dark:border-[#3e2d20] dark:bg-[#221810] dark:hover:border-[#6b4c35] dark:hover:bg-[#2d2116]"
                       href={codiProject.link}
@@ -643,7 +636,7 @@ export default function Home() {
 
                 <div className="mx-auto hidden min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:flex sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
                   <div className="flex items-center justify-center">
-                    <AndroidTabletFrame className="!w-[440px] !max-w-[440px]" screenClassName="bg-[#f7eedf]">
+                    <AndroidTabletFrame className="!h-auto !w-[524px] !max-w-none" screenClassName="bg-[#f7eedf]">
                       <VimeoEmbed
                         src={muskegonDemoUrl}
                         title="Muskegon tablet demo"
@@ -656,11 +649,11 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#251409] transition group-hover:text-[#7a3f22] dark:text-[#f5e6d6] dark:group-hover:text-[#d19a6a]">{polishFestivalProject.title}</h3>
-                  <p className="text-sm font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#c2a88f]">{polishFestivalProject.productType}</p>
-                  <p className="text-lg leading-7 text-[#4a3222] dark:text-[#e2cfbb]">{polishFestivalProject.summary}</p>
-                  <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                  <p className="text-base font-semibold text-[#664834] dark:text-[#c2a88f]">{polishFestivalProject.productType}</p>
+                  <p className="text-lg text-[#4a3222] dark:text-[#e2cfbb]">{polishFestivalProject.summary}</p>
+                  <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
                     {polishFestivalProject.stack.map((tech) => (
-                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                      <span key={tech} className={`rounded-full px-4 py-2 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -681,7 +674,7 @@ export default function Home() {
             <article className="group rounded-none border-0 bg-[#f7eedf]/95 p-4 shadow-none transition hover:-translate-y-1 hover:shadow-lg hover:shadow-[#251409]/15 sm:rounded-2xl sm:bg-[#f7eedf] sm:p-8 sm:border sm:border-[#dfceb6] sm:shadow-sm dark:bg-[#221810]/85 dark:sm:rounded-2xl dark:sm:bg-[#221810] dark:sm:border-[#3e2d20]">
               <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                 <div className="mx-auto flex min-h-[446px] max-w-[760px] items-center justify-center p-2 pb-3 pt-2 sm:min-h-[460px] sm:p-4 sm:pb-16 sm:pt-4">
-                  <IPhoneFrame className="!max-w-[250px]">
+                  <IPhoneFrame className="!max-w-[400px]">
                     <VimeoEmbed
                       src={finalBuzzerDemoUrl}
                       title="The Final Buzzer mobile demo"
@@ -693,11 +686,11 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-[#251409] transition group-hover:text-[#7a3f22] dark:text-[#f5e6d6] dark:group-hover:text-[#d19a6a]">{finalBuzzerProject.title}</h3>
-                  <p className="text-sm font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#c2a88f]">{finalBuzzerProject.productType}</p>
-                  <p className="text-lg leading-7 text-[#4a3222] dark:text-[#e2cfbb]">{finalBuzzerProject.summary}</p>
-                  <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                  <p className="text-base font-semibold text-[#664834] dark:text-[#c2a88f]">{finalBuzzerProject.productType}</p>
+                  <p className="text-lg text-[#4a3222] dark:text-[#e2cfbb]">{finalBuzzerProject.summary}</p>
+                  <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
                     {finalBuzzerProject.stack.map((tech) => (
-                      <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                      <span key={tech} className={`rounded-full px-4 py-2 ${getProjectSkillPillClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
@@ -730,11 +723,11 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-semibold text-[#251409] dark:text-[#f5e6d6]">{wildcatProject.title}</h3>
-                    <p className="text-sm font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#c2a88f]">{wildcatProject.productType}</p>
-                    <p className="text-lg leading-7 text-[#4a3222] dark:text-[#e2cfbb]">{wildcatProject.summary}</p>
-                    <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                    <p className="text-base font-semibold text-[#664834] dark:text-[#c2a88f]">{wildcatProject.productType}</p>
+                    <p className="text-lg text-[#4a3222] dark:text-[#e2cfbb]">{wildcatProject.summary}</p>
+                    <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
                       {wildcatProject.stack.map((tech) => (
-                          <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                          <span key={tech} className={`rounded-full px-4 py-2 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
@@ -745,7 +738,7 @@ export default function Home() {
                   isTouchPreviewDevice && tappedProjectCard === "wildcat" ? "opacity-100" : "opacity-0"
                 }`}>
                   <div className="flex h-full w-full items-center justify-center pb-24 pt-6 sm:pb-16 sm:pt-0">
-                    <IPhoneFrame className="!max-w-[250px]">
+                    <IPhoneFrame className="!max-w-[280px]">
                       <VimeoEmbed
                         src={wildcatDemoUrl}
                         title="Wildcat Fantasy Football demo"
@@ -785,11 +778,11 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-semibold text-[#251409] dark:text-[#f5e6d6]">{meTimeProject.title}</h3>
-                    <p className="text-sm font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#c2a88f]">{meTimeProject.productType}</p>
-                    <p className="text-lg leading-7 text-[#4a3222] dark:text-[#e2cfbb]">{meTimeProject.summary}</p>
-                    <div className="flex flex-wrap gap-2.5 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
+                    <p className="text-base font-semibold text-[#664834] dark:text-[#c2a88f]">{meTimeProject.productType}</p>
+                    <p className="text-lg text-[#4a3222] dark:text-[#e2cfbb]">{meTimeProject.summary}</p>
+                    <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#4a3222] dark:text-[#e2cfbb]">
                       {meTimeProject.stack.map((tech) => (
-                          <span key={tech} className={`rounded-full px-2.5 py-1.5 sm:px-3.5 ${getProjectSkillPillClass(tech)}`}>
+                          <span key={tech} className={`rounded-full px-4 py-2 ${getProjectSkillPillClass(tech)}`}>
                           {tech}
                         </span>
                       ))}
@@ -800,7 +793,7 @@ export default function Home() {
                   isTouchPreviewDevice && tappedProjectCard === "metime" ? "opacity-100" : "opacity-0"
                 }`}>
                   <div className="flex h-full w-full items-center justify-center pb-24 pt-6 sm:pb-16 sm:pt-0">
-                    <IPhoneFrame className="!max-w-[250px]">
+                    <IPhoneFrame className="!max-w-[280px]">
                       <VimeoEmbed
                         src={meTimeDemoUrl}
                         title="MeTime demo"
@@ -829,7 +822,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-24 rounded-3xl border border-[#dfceb6] bg-gradient-to-r from-[#8a4f2a] via-[#7a3f22] to-[#6f3f20] p-8 text-white shadow-lg shadow-[#251409]/25 dark:border-[#3e2d20]">
+        <section id="contact" className="scroll-mt-24 rounded-3xl border border-[#dfceb6] bg-[#ac5d2c] p-8 text-white shadow-inner shadow-[#251409]/15 dark:border-[#3e2d20] dark:bg-[#8a4f2a]">
           <div className="mb-4 flex flex-col gap-2">
             {/* <p className="text-sm uppercase tracking-[0.1em] text-[#fff0df]">Contact</p> */}
             <h2 className="text-2xl font-semibold">Open to new connections and opportunities. Let&apos;s chat!</h2>

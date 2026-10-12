@@ -9,6 +9,12 @@ import muskegonMobile from "../polishfestival/Muskegon Mobile Screenshot.jpeg"
 import muskegonTablet from "../polishfestival/Muskegon Tablet Screenshot.png"
 import muskegonFlow from "../polishfestival/Muskegon Experience Flow.png"
 import expositionWinner from "../polishfestival/ExpositionWinner.png"
+import festivalUsers from "../polishfestival/Festival Users.jpeg"
+import festivalUsers2 from "../polishfestival/Festival Users 2.jpeg"
+import festivalSetup from "../polishfestival/Festival Setup.jpeg"
+import olderFestivalUser from "../polishfestival/Older Festival User.jpeg"
+import youngerFestivalUser from "../polishfestival/Younger Festival User.jpeg"
+import festivalUsersPhone from "../polishfestival/Festival Users Phone.jpeg"
 
 export const metadata = {
   title: "Muskegon Polish Festival | Siraaj Kudtarkar",
@@ -40,7 +46,7 @@ const stackDesign = [
 export default function MuskegonPolishFestivalPage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
-      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-8 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav />
         {/* <div className="flex flex-wrap items-center justify-between gap-3">
             <a
@@ -157,9 +163,31 @@ export default function MuskegonPolishFestivalPage() {
             <Image
               src={muskegonFlow}
               alt="Muskegon festival experience flow"
-              className="h-auto w-full rounded-xl object-contain"
+              className="mx-auto h-auto max-w-[1000px] rounded-xl object-cover"
             />
           </div>
+          <div className="rounded-2xl">
+              <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">The Result</h2>
+              <div className="mx-auto grid max-w-[1000px] grid-cols-2 gap-4">
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src={festivalUsersPhone}
+                  alt="User at the Muskegon Polish Festival with phone experience"
+                  className="block aspect-[3/2] h-full w-full object-cover"
+                />
+              </div>
+            <div className="overflow-hidden rounded-xl">
+            <Image
+              src={festivalSetup}
+              alt="Muskegon festival tablet experience setup"
+              className="block aspect-[3/2] h-full w-full object-cover"
+            />
+            </div>
+          </div>
+          </div>
+          <p className="text-sm text-center text-[#4a3222] dark:text-white">
+              Left image shows a user scanning the QR code to begin the Mobile Guide Experience. Right image displays the initial screen and steps of the Tablet Experience.
+            </p>
         </section>
 
         <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-inner shadow-[#251409]/6 dark:border-[#3e2d20] dark:bg-[#221810]/85">
@@ -270,11 +298,49 @@ export default function MuskegonPolishFestivalPage() {
               <Image
                 src={expositionWinner}
                 alt="Exposition Winner"
-                className="block h-auto max-w-[800px] object-contain"
+                className="block h-auto max-w-[800px] object-cover"
               />
             </div>
             <p className="text-sm text-center text-[#4a3222] dark:text-white">
               Team: Samantha Pratt, Boran Yang, Xiwen Cao, Siraaj Kudtarkar, Jonte Taffe (not pictured) <br/> SI 699 User-Centered Agile Development Mastery Course
+            </p>
+            <div className="space-y-4 text-base leading-7 text-[#4a3222] dark:text-white">
+            <p>
+              The experience was received very well by those who used the tablets. Feedback from the festival included "Amazing," "I've never seen anything like this before," "Really cool," and "That was something!" Visitors also suggested changes: "Get rid of ads on the videos," "The timeline makes it cumbersome to find what I was looking for," and "Can I keep this experience?" We also saw that attendees were intimidated by the quiz, since many were afraid they needed to know Polish historical trivia.
+            </p>
+            </div>
+            <div className="mx-auto grid max-w-[800px] grid-cols-2 gap-4">
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src={festivalUsers}
+                  alt="Users at the Muskegon Polish Festival with tablet experience"
+                  className="block aspect-[3/2] h-full w-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src={festivalUsers2}
+                  alt="Users at the Muskegon Polish Festival with tablet experience"
+                  className="block aspect-[3/2] h-full w-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src={olderFestivalUser}
+                  alt="An older visitor using the Muskegon Polish Festival tablet experience"
+                  className="block aspect-[3/2] h-full w-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src={youngerFestivalUser}
+                  alt="A younger visitor using the Muskegon Polish Festival tablet experience"
+                  className="block aspect-[3/2] h-full w-full object-cover"
+                />
+              </div>
+            </div>
+            <p className="text-sm text-center text-[#4a3222] dark:text-white">
+              Visitors of all ages at the Muskegon Polish Festival engaged with the Tablet Experience!
             </p>
           </div>
         </section>

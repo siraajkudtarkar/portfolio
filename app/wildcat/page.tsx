@@ -37,7 +37,7 @@ const wildcatDemoVimeoUrl = "https://player.vimeo.com/video/1167948725?autoplay=
 export default function WildcatPage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
-      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-8 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav />
         {/* <div className="flex flex-wrap items-center justify-between gap-3"> */}
           {/* <div className="flex flex-wrap items-center gap-3">
@@ -62,31 +62,27 @@ export default function WildcatPage() {
         </section>
 
         <header className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-lg shadow-[#251409]/10 backdrop-blur dark:border-[#3e2d20] dark:bg-[#221810]/85">
-          <div className="space-y-3">
-            {/* <p className="text-sm uppercase tracking-[0.1em] text-[#664834] dark:text-[#cdb69f]">Project</p> */}
+          <div className="space-y-4">
             <h1 className="text-3xl font-semibold">Wildcat Fantasy Football</h1>
             <p className="text-sm font-semibold text-[#664834] dark:text-[#c2a88f]">Sports &amp; Entertainment</p>
             <p className="text-base leading-7 text-[#4a3222] dark:text-white">
              A fantasy football mobile app for players who want a less predictable experience, with a bet-based multiplier system that brings real risk and reward to weekly matchups. I built Wildcat on my own for players who think standard fantasy is predictable, from a React Native frontend to secure auth and MongoDB backed APIs.
-
-
             </p>
 
-            {/* Optional: swap placeholders for real screenshots like MeTime */}
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={wildcatHome} alt="Wildcat Fantasy Football Home Screen" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={wildcatLeaderboard} alt="Wildcat Fantasy Football Leaderboard" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={wildcatMatchup} alt="Wildcat Fantasy Football Matchup Screen" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
             </div>
@@ -142,7 +138,7 @@ export default function WildcatPage() {
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
             <div className="mx-auto flex items-center justify-center py-3 sm:py-0">
-              <IPhoneFrame className="max-w-[300px]">
+              <IPhoneFrame className="!max-w-[400px]" screenClassName="bg-[#f7eedf]">
                 <VimeoEmbed
                   src={wildcatDemoVimeoUrl}
                   title="Wildcat Fantasy Football demo preview"

@@ -21,12 +21,11 @@ export default function IPhoneFrame({
         <div className="pointer-events-none absolute left-1/2 top-[13px] z-20 h-[14px] w-[84px] -translate-x-1/2 rounded-b-xl bg-[#1f1611]/95 dark:bg-black/90 sm:top-[15px] sm:h-[18px] sm:w-[108px] sm:rounded-b-2xl" />
       )}
       <div
-        className={`relative isolate h-full w-full overflow-hidden rounded-[1.3rem] bg-[#f7eedf] shadow-[inset_0_0_0_1px_rgba(216,195,176,0.55)] [contain:paint] dark:bg-[#221810] dark:shadow-[inset_0_0_0_1px_rgba(216,195,176,0.25)] sm:rounded-[1.6rem] ${screenClassName ?? ""}`}
+        className={`relative isolate h-full w-full overflow-hidden rounded-[1.3rem] bg-[#f7eedf] [contain:paint] dark:bg-[#221810] sm:rounded-[1.6rem] ${screenClassName ?? ""}`}
       >
         <div className="h-full w-full">
           {children}
         </div>
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[10px] bg-[#f7eedf] shadow-[inset_0_0_2px_rgba(43,32,24,0.4)] dark:bg-[#221810] sm:h-[14px]" />
       </div>
     </div>
   );

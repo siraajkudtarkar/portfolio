@@ -39,7 +39,7 @@ const codiDemoVideoUrl = "https://player.vimeo.com/video/1167947118?autoplay=1&m
 export default function CodiPage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
-      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-8 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav />
         <section className="p-8">
           <p className="text-2xl text-center font-bold leading-tight text-[#251409] sm:text-3xl dark:text-white">
@@ -56,20 +56,20 @@ export default function CodiPage() {
               Codi is a collaborative mobile app for families navigating Type 1 diabetes. It helps children and parents communicate clearly through a research-backed, user-centered experience, supported by a University of Michigan-backed research study.
             </p>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={codiHome} alt="Codi home screen" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={codiHome} alt="Codi home screen" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={codiHistory} alt="Codi history screen" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={codiHistory} alt="Codi history screen" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={codiSummaryLog} alt="Codi summary log activity screen" className="h-full w-full object-contain" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={codiSummaryLog} alt="Codi summary log activity screen" className="h-full w-full object-cover" />
                 </IPhoneFrame>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function CodiPage() {
         <section className="mt-4 space-y-4 rounded-3xl border border-[#dfceb6] bg-[#f7eedf]/95 p-8 shadow-inner shadow-[#251409]/6 dark:border-[#3e2d20] dark:bg-[#221810]/85">
           <h2 className="text-lg font-semibold">Demo</h2>
           <div className="space-y-4">
-            <div className="mx-auto flex items-center justify-center py-3 sm:py-0">
+            <div className="mx-auto flex items-center justify-center py-4 sm:py-0">
               <IPhoneFrame className="!max-w-[400px]">
                 <VimeoEmbed
                   src={codiDemoVideoUrl}
@@ -135,15 +135,6 @@ export default function CodiPage() {
                 />
               </IPhoneFrame>
             </div>
-
-            {/* <div className="grid gap-3 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-2xl border border-[#dfceb6] bg-[#f7eedf] shadow-sm dark:border-[#3e2d20] dark:bg-[#221810]">
-                <Image src={codiLogActivity} alt="Codi log activity screen" className="h-full w-full object-cover" />
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-[#dfceb6] bg-[#f7eedf] shadow-sm dark:border-[#3e2d20] dark:bg-[#221810]">
-                <Image src={codiLogActivityChatbot} alt="Codi log activity chatbot screen" className="h-full w-full object-cover" />
-              </div>
-            </div> */}
 
             <div className="grid gap-3 sm:grid-cols-2">
               {demoLinks.map((link) => (

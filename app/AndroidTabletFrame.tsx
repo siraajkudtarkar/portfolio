@@ -13,7 +13,7 @@ export default function AndroidTabletFrame({ children, className, screenClassNam
     >
       <div className="pointer-events-none absolute left-1/2 top-2 h-1.5 w-16 -translate-x-1/2 rounded-full bg-[#5c4636] opacity-90 dark:bg-[#2a1d16]" />
       <div
-        className={`relative h-full w-full overflow-hidden rounded-[1.5rem] bg-[#f7eedf] shadow-[inset_0_0_0_1px_rgba(216,195,176,0.55)] [contain:paint] dark:bg-[#221810] dark:shadow-[inset_0_0_0_1px_rgba(216,195,176,0.25)] ${screenClassName ?? ""}`}
+        className={`relative h-full w-full overflow-hidden rounded-[1.5rem] bg-[#f7eedf] [contain:paint] dark:bg-[#221810] ${screenClassName ?? ""}`}
       >
         {children}
       </div>

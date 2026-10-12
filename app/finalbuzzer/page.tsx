@@ -36,7 +36,7 @@ const finalBuzzerMobileDemoVimeoUrl = "https://player.vimeo.com/video/1167948538
 export default function FinalBuzzerPage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
-      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-8 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav />
         {/* <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-3">

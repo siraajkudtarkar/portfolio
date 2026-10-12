@@ -40,7 +40,7 @@ const meTimeDemoVimeoUrl = "https://player.vimeo.com/video/1167950147?autoplay=1
 export default function MeTimePage() {
   return (
     <div className="bg-[radial-gradient(circle_at_12%_20%,rgba(182,115,70,0.12),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(217,176,140,0.18),transparent_28%),#f5ede1] text-[#251409] dark:bg-[#221810] dark:text-white">
-      <main className="flex min-h-screen flex-col gap-8 px-5 pb-24 pt-6 sm:px-8 sm:pt-8 lg:px-16">
+      <main className="flex min-h-screen flex-col gap-8 px-4 pb-8 pt-4 sm:px-8 sm:pt-8 lg:px-16">
         <ProjectNav />
         {/* <div className="flex flex-wrap items-center justify-between gap-3">
           <a
@@ -71,18 +71,18 @@ export default function MeTimePage() {
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={authImg} alt="MeTime sign up and login wireframe" className="h-full w-full object-contain" placeholder="blur" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={authImg} alt="MeTime sign up and login wireframe" className="h-full w-full object-cover" placeholder="blur" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={homeFeedImg} alt="MeTime home feed wireframe" className="h-full w-full object-contain" placeholder="blur" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={homeFeedImg} alt="MeTime home feed wireframe" className="h-full w-full object-cover" placeholder="blur" />
                 </IPhoneFrame>
               </div>
               <div className="flex items-center justify-center py-2 sm:py-0">
-                <IPhoneFrame className="max-w-[196px] sm:max-w-[190px]">
-                  <Image src={addActivityImg} alt="MeTime add activity wireframe" className="h-full w-full object-contain" placeholder="blur" />
+                <IPhoneFrame className="!max-w-[260px]">
+                  <Image src={addActivityImg} alt="MeTime add activity wireframe" className="h-full w-full object-cover" placeholder="blur" />
                 </IPhoneFrame>
               </div>
             </div>
